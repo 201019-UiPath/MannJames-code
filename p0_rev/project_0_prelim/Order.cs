@@ -16,8 +16,21 @@ namespace project_0
         //1 requires pickup datetime
 
         List<String> orderList = new List<String>();
-
         float totalCost{get;set;}
+
+        public Order(int orderID, int locationID, int customerID, string orderDate)
+        {
+            this.orderID = orderID;
+            this.locationID = locationID;
+            this.customerID = customerID;
+            this.orderDate = orderDate;
+
+        }
+        public static void main(String[] args)
+        {
+        Order o1 = new Order(1, 2, 3, "12/31/2020");
+        Console.WriteLine(o1);
+        }
 
 
     }

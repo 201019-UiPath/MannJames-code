@@ -11,5 +11,14 @@ namespace project_0
         //convert name to lowercase
         float productPrice{get;set;}
 
+        public Product(int productID, string productName, string productType, float productPrice)
+        {
+            this.productID = productID;
+            this.productName = productName;
+            this.productType = productType;
+            this.productPrice = productPrice;
+
+        }
+
     }
 }
