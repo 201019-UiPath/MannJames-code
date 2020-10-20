@@ -1,0 +1,50 @@
+CLI			-> 	dotnet build 	-> 	CIL/MSIL (platform indep) 	-> 	runtime/CLR 	-> 	exec
+(command line interface)				intermediate language
+							run-time system of a CLI = virtual execution system
+
+lang -> CIL Common language infrustructure /MSIL -> Runtime/CLR -> exec
+
+C# -> CSC
+F# -> FSC
+VB -> VBC
+
+dotnet new console -l vb -o directoryname
+
+garbage collector runs to free memory
+
+namespace -> logically sep (avoid naming conflict)
+assembly -> physical sep (exe or dll)
+
+C#  	    CTS  	 VB
+int -> 	 System.Int32 <- integer
+short -> System.Int16 <- foo
+
+C# -> TypeSafe language, case-sensitive
+
+biggest part is parts of sdk
+
+SDK
+-donet CLO
+-dotnet libraries
+-runtime/comand language runtime
+-languages
+	Common type system
+	Common Language Specification (ie. oop modeling, always start from 0) - rules to make life easier
+
+Start with big picture and move to specifics
+
+dotnet build converts source code to assembly
+
+1-tier application (no physical sep / 1 machine) -> ui / bl / db
+2-tier app -> UI (with own BL), server (with own BL and DB) / client<->server
+3-tier app -> client (w/ BL) <-> server (w/ BL) -> backend (DB)
+N-tier applications -> microservices
+
+.Net Solution
+|-> proj 1
+|-> proj 2
+...
+|-> project n
+
+dotnet new console -o <proj name>, dotnet sln <name> add <reference to the console proj (your directory)>
+dotnet new classLib -lang C# -o <name>
