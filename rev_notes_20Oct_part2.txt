@@ -1,0 +1,8 @@
+dotnet new console -o <proj name>, dotnet sln <name> add <reference to the console proj (your directory)>
+dotnet new classLib -lang C# -o <name>
+
+namespace --> types (Class, struct, interface,...) / members
+
+Types (class, enums, structs, interface, delegates) --> value, reference
+	Value types - stacks
+
