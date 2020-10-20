@@ -1,0 +1,59 @@
+
+The customer should be able to place orders
+addorder(customerID)
+
+The customer should be able to view their order history
+view orders(customerID)
+
+The customer should be able to view location inventory
+viewinventory(locationID)
+
+The customer should know how much of a product is remaining
+quantity(productID)
+
+The customer should be able to purchase multiple products
+addorder(productID_1, productID_2,...)
+
+Locations should have records of order history
+orderhistory(locationID)
+
+Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive)
+The manager should be able to replenish inventory
+order --> date 
+order --> cost
+
+Models:
+Customer
+- firstname
+- lastname
+- customerID
+- orderIDs
+- address
+- city
+- state
+- zipCode
+- phoneNumber
+
+Location
+- locationID
+- city
+- state
+- zipCode
+- productIDs
+- address
+- phoneNumber
+
+Orders
+- orderID
+- orderDescription
+- orderName
+- productID
+- shipDate
+- arrivalDate
+- customerID              
+
+Product
+- productID
+- orderIDs
+
+Note: add as much models as you would need for your design
