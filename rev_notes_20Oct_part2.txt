@@ -6,3 +6,14 @@ namespace --> types (Class, struct, interface,...) / members
 Types (class, enums, structs, interface, delegates) --> value, reference
 	Value types - stacks
 
+properties are the ones you use to add logic to fields
+they have the getters and setters
+
+methods are like jsp functions, block with operations
+Microsoft calls properties as smart fields to wencapsulate value of properties
+
+collections --> arrays: generics
+arrays -> 1-D, 2-D, jagged, multi-d
+generics -> stack, queues, list, dictionary
+
+
