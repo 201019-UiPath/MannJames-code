@@ -1,0 +1,34 @@
+ola.ogunsanya@revature.com hr
+connect@revature.com lgb ai? hc/pharm?
+
+Emily.baillie@revature.com staging
+
+uipath - robotic process automation
+
+week 1 to 4 .Net
+	C#
+	SQL
+	Asp.Net (MVC, SOAP and RESTful)
+	Front tech (HTML, CSS, JS, VB)
+5 to 8 UiPath
+	UiPath Foundation -> Studio
+	UiPath Advanced -> ReFramework and Orchestrator
+	UiPath New Features and advanced training -> Hyperautomation and ELK	
+9 to 10 P3, Portfolios, Client interviews and Showcase
+
+Training operations
+Evals: quizzes, 1 on 1s, QC, panels (mock interviews, week 9 start)
+Project: 4ish, P0 (cli), P1 (p0 2.0, gui), p2 (group, uipath foundation), p3 (inhouse, group and batch presentation)
+	
+Timings
+9:00 - 17:00 est
+10:30 - 15 min break
+12:30 - 13:30 lunch
+15:00 break 2	
+
+-------------
+
+.net-> platform to create apps (CUI, GUI, microservices, cloud service, IOT, game development, ML)
+2002 -> .net Framework 1.0
+2020 -> .Net -> Framework (Win), Core (2016, platform independent), Xamarin (iOS, Android, Microsoft mobile,...), Mono (macOS)
+	
