@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static project0.Product;
 
-namespace project0
+namespace Models
 {
     public class Location
     {
@@ -21,9 +20,15 @@ namespace project0
             this.cityName = cityName;
             this.stateName = stateName;
             this.zipCode = zipCode;
+        }
 
-            Console.WriteLine($"{address} {cityName} " +
-                $"{stateName} {zipCode}");
+        public Location()
+        {
+            this.locationID = 0;
+            this.address = null;
+            this.cityName = null;
+            this.stateName = null;
+            this.zipCode = null;
         }
     }
 }
