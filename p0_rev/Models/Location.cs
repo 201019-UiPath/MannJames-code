@@ -7,28 +7,29 @@ namespace Models
 {
     public class Location
     {
-        int locationID { get; set; }
-        string address { get; set; }
-        string cityName { get; set; }
-        string stateName { get; set; }
-        string zipCode { get; set; }
+        public int LocationID { get; set; }
+        public string Address { get; set; }
+        public string CityName { get; set; }
+        public string StateName { get; set; }
+        public string ZipCode { get; set; }
 
-        public Location(int locationID, string address, string cityName, string stateName, string zipCode)
+        public Location(int LocationID, string Address, string CityName, 
+            string StateName, string ZipCode)
         {
-            this.locationID = locationID;
-            this.address = address;
-            this.cityName = cityName;
-            this.stateName = stateName;
-            this.zipCode = zipCode;
+            this.LocationID = LocationID;
+            this.Address = Address;
+            this.CityName = CityName;
+            this.StateName = StateName;
+            this.ZipCode = ZipCode;
         }
 
         public Location()
         {
-            this.locationID = 0;
-            this.address = null;
-            this.cityName = null;
-            this.stateName = null;
-            this.zipCode = null;
+            this.LocationID = 0;
+            this.Address = null;
+            this.CityName = null;
+            this.StateName = null;
+            this.ZipCode = null;
         }
     }
 }

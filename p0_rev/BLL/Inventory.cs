@@ -12,12 +12,17 @@ namespace BLL
     public class Inventory
     {
 
-        public void GetInventories()
+        /*public void GetInventories()
         {
             //Console.WriteLine("Our locations have...");
             Console.WriteLine("--------------");
-            ProductToString();
-            
-        }
+            Location loc1;
+            Location loc2;
+            Location loc3;
+            List<Product> prodListLoc1;
+            List<Product> prodListLoc2;
+            List<Product> prodListLoc3;
+
+        }*/
     }
 }

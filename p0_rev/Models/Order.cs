@@ -2,32 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace project0
+namespace Models
 {
-    class Order
+    public class Order
     {
-        int orderID { get; set; }
-        int locationID { get; set; }
-        int customerID { get; set; }
-        string orderDate { get; set; }
-        string pickUpDate { get; set; }
-        Boolean pickUp { get; set; }
-        //if 1 means pickup happened
-        //presence of pickup date means 1
-        //1 requires pickup datetime
+        public int OrderID { get; set; }
+        public int LocationID { get; set; }
+        public int CustomerID { get; set; }
+        public string OrderDate { get; set; }
+        public string PickUpDate { get; set; }
+        public Boolean PickUp { get; set; }
+        public double TotalCost { get; set; }
 
-        List<String> orderList = new List<String>();
-        double totalCost { get; set; }
-
-        public Order(int orderID, int locationID, 
-            int customerID, string orderDate)
+        public Order(int OrderID, int LocationID, 
+            int CustomerID, string OrderDate)
         {
-            this.orderID = orderID;
-            this.locationID = locationID;
-            this.customerID = customerID;
-            this.orderDate = orderDate;
-            Console.WriteLine($"{orderDate}");
-            //need to create list for orders
+            this.OrderID = OrderID;
+            this.LocationID = LocationID;
+            this.CustomerID = CustomerID;
+            this.OrderDate = OrderDate;
+        }
+
+        public Order()
+        {
+            this.OrderID = 0;
+            this.LocationID = 0;
+            this.CustomerID = 0;
+            this.OrderDate = "00/00/0000";
         }
     }
 }

@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Libraries;
-using Models;
 
-namespace BLL
+namespace Models
 {
     class Program
     {
         public static void Main(String[] args)
         {
-            //prod1.productName.toString();
+            Console.Out.WriteLine("line");
         }
     }
 }

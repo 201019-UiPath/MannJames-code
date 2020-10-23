@@ -6,43 +6,44 @@ namespace Models
 {
     public class Product
     {
-        int productID { get; set; }
-        string productName { get; set; }
-        string productType { get; set; }
-        string productPrice { get; set; }
+        public int ProductID { get; set; }
+        public string ProductName { get; set; }
+        public string ProductType { get; set; }
+        public double ProductPrice { get; set; }
 
 
-        public Product(int productID, string productName, string productType, string productPrice)
+        public Product(int ProductID, string ProductName, string ProductType, double ProductPrice)
         {
-            this.productID = productID;
-            this.productName = productName;
-            this.productType = productType;
-            this.productPrice = productPrice;
+            this.ProductID = ProductID;
+            this.ProductName = ProductName;
+            this.ProductType = ProductType;
+            this.ProductPrice = ProductPrice;
         }
 
         public Product()
         {
-            this.productID = 0;
-            this.productName = null;
-            this.productType = null;
-            this.productPrice = null;
+            this.ProductID = 0;
+            this.ProductName = null;
+            this.ProductType = null;
+            this.ProductPrice = 0.00;
         }
-/*
-        public void ProdToString()
-        {
-            String prodN = productName;
-            String prodT = productType;
-            String prodP = productPrice;
 
-            Console.Out.WriteLine(prodN);
-            Console.Out.WriteLine(prodT);
-            Console.Out.WriteLine(prodP);
-        }*/
-        
-        public void PTS(Product product)
-        {
-            Console.Out.WriteLine($"{Product.productName}");
-        }
+
+
+
+
+        /*
+                public void ProdToString()
+                {
+                    String prodN = ProductName;
+                    String prodT = ProductType;
+                    String prodP = ProductPrice;
+
+                    Console.Out.WriteLine(prodN);
+                    Console.Out.WriteLine(prodT);
+                    Console.Out.WriteLine(prodP);
+                }*/
+
 
 
         //public virtual string ToString();

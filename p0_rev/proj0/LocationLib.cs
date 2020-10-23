@@ -7,7 +7,7 @@ namespace Libraries
 {
     class LocationLib
     {
-        Location loc1 = new Location
+        public Location loc1 = new Location
         (
             1,
             "11001 Sample Road",
@@ -16,7 +16,7 @@ namespace Libraries
             "33065"
         );
 
-        Location loc2 = new Location
+        public Location loc2 = new Location
         (
             2,
             "3200 College Ave",
@@ -25,7 +25,7 @@ namespace Libraries
             "33321"
         );
 
-        Location loc3 = new Location
+        public Location loc3 = new Location
         (
             3,
             "19221 Powerline Road",
