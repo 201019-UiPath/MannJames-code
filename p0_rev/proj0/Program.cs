@@ -24,13 +24,17 @@ namespace Libraries
     {
         public static void Main(String[] args)
         {
+            LocationLib lL = new LocationLib();
+            Console.Out.WriteLine($"You chose Location {lL.loc1.LocationID} at");
+            Console.Out.WriteLine($"{lL.loc1.Address} {lL.loc1.CityName} {lL.loc1.StateName} {lL.loc1.ZipCode}");
+            Console.Out.WriteLine("------------------------------");
             ProductLib pL = new ProductLib();
 
             pL.ProductList.Where(Products => Products.LocationID == 1)
                 .ToList()
                 .ForEach(Products => Console.WriteLine
                 (
-                    Products.ProductName + " " + Products.ProductType + " $" + Products.ProductPrice
+                    $"{Products.ProductName} {Products.ProductType} $ {Products.ProductPrice}"
                 ));
      
             //Console.Out.Write();
