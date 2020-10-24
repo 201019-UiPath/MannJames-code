@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Libraries;
 using Models;
@@ -21,83 +24,16 @@ namespace Libraries
     {
         public static void Main(String[] args)
         {
+            ProductLib pL = new ProductLib();
 
-            void ProdToString(Product prod)
-            {
-                Console.Out.WriteLine($"{prod.ProductName}");
-                Console.Out.WriteLine($"{prod.ProductType}");
-                Console.Out.WriteLine($"{prod.ProductPrice}");
-            }
-            ProductLib pL;
-
-            void LocToString(Location loc)
-            {
-                Console.Out.WriteLine($"{loc.Address}");
-                Console.Out.WriteLine($"{loc.CityName}");
-                Console.Out.WriteLine($"{loc.StateName}");
-                Console.Out.WriteLine($"{loc.ZipCode}");
-            }
-            LocationLib lL;
-
-            void OrdToString(Order ord) 
-            {
-                Console.Out.WriteLine($"{ord.OrderDate}");
-            }
-            OrderLib oL;
-
-            void CustToString(Customer cust)
-            {
-                Console.Out.WriteLine($"{cust.FirstName}");
-                Console.Out.WriteLine($"{cust.LastName}");
-                Console.Out.WriteLine($"{cust.PhoneNumber}");
-            }
-            CustomerLib cL = new CustomerLib();
-            CustToString(cL.cust1);
-            /*
-            void Inventory()
-            {
-
-                //location 1
-                Console.Out.WriteLine("-----------------");
-                LocToString(lL.loc1);
-                Console.Out.WriteLine("-----------------");
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod2);
-                ProdToString(pL.prod2);
-                Console.Out.WriteLine("-----------------");
-                
-                Console.Out.WriteLine("-----------------");
-                LocToString(lL.loc2);
-                Console.Out.WriteLine("-----------------");
-                //location2
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod2);
-                ProdToString(pL.prod2);
-                ProdToString(pL.prod2);
-                Console.Out.WriteLine("-----------------");
-                Console.Out.WriteLine("-----------------");
-                LocToString(lL.loc3);
-                Console.Out.WriteLine("-----------------");
-                //location3
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod1);
-                ProdToString(pL.prod1);
-                Console.Out.WriteLine("-----------------");
-            }
-            */
-
- 
-
-
-            //create orders
-            //test email for orders once made?
-
-            //Inventory();
-
-
+            pL.ProductList.Where(Products => Products.LocationID == 1)
+                .ToList()
+                .ForEach(Products => Console.WriteLine
+                (
+                    Products.ProductName + " " + Products.ProductType + " $" + Products.ProductPrice
+                ));
+     
+            //Console.Out.Write();
         }
     }
 }
