@@ -11,6 +11,8 @@ namespace BLL
         public static void Main(String[] args)
         {
             //prod1.productName.toString();
+            Inventory inv = new Inventory();
+            inv.Inventories();
         }
     }
 }

@@ -5,7 +5,7 @@ using Models;
 
 namespace Libraries
 {
-    class LocationLib
+    public class LocationLib
     {
         public Location loc1 = new Location
         (
