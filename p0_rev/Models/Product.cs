@@ -34,11 +34,11 @@ namespace Models
             this.ProductType = null;
             this.ProductPrice = 0.00;
         }
-        public Product(int ProductID, int LocationID, string ProductName, string ProductType, 
+        public Product(int ProductID, string ProductName, string ProductType, 
             double ProductPrice, int OrderID, int Quantity)
         {
             this.ProductID = ProductID;
-            this.LocationID = LocationID;
+            //this.LocationID = LocationID;
             this.ProductName = ProductName;
             this.ProductType = ProductType;
             this.ProductPrice = ProductPrice;
