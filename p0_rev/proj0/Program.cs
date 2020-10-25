@@ -30,14 +30,35 @@ namespace Libraries
             Console.Out.WriteLine("------------------------------");
             ProductLib pL = new ProductLib();
 
-            pL.ProductList.Where(Products => Products.LocationID == 1)
+            pL.ProductList.Where(Products => Products.LocationID == 1 && Products.Quantity > 0)
+                .ToList()
+                .ForEach(Products => Console.WriteLine
+                (
+                    $"There are {Products.Quantity} left of " +
+                    $"{Products.ProductName} {Products.ProductType} $ {Products.ProductPrice}"
+                ));
+            Console.Out.WriteLine(" ");
+            Console.Out.WriteLine("We also have");
+            pL.ProductList.Where(Products => Products.LocationID == 1 && Products.ProductType == "Coffee")
                 .ToList()
                 .ForEach(Products => Console.WriteLine
                 (
                     $"{Products.ProductName} {Products.ProductType} $ {Products.ProductPrice}"
                 ));
-     
-            //Console.Out.Write();
+            Console.Out.WriteLine("------------------------------");
+
+            CustomerLib cL = new CustomerLib();
+            cL.CustomerList.Where(Customers => Customers.CustomerID == 1)
+                .ToList()
+                .ForEach(Customer => Console.WriteLine
+                (
+                    $"Welcome {Customer.FirstName} {Customer.LastName} at {Customer.PhoneNumber}"
+                ));
+
+            //Console.Out.WriteLine($"Welcome {firstname} {lastname}");
+            //Console.Out.WriteLine($"Contact Info: {phonenumber}");
+            //Console.Out.WriteLine($"Your Orders are: {order}");
+            //Console.Out.WriteLine($"Your Orders are: {products}");
         }
     }
 }
