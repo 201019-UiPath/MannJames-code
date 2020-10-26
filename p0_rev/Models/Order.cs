@@ -30,5 +30,11 @@ namespace Models
             this.CustomerID = 0;
             this.OrderDate = "00/00/0000";
         }
+        public override string ToString()
+        {
+            string output = "";
+            output += $"{OrderID} {LocationID} {CustomerID} {OrderDate}";
+            return output;
+        }
     }
 }

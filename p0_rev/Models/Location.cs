@@ -31,5 +31,12 @@ namespace Models
             this.StateName = null;
             this.ZipCode = null;
         }
+
+        public override string ToString()
+        {
+            string output = "";
+            output += $"{LocationID} {Address} {CityName} {StateName} {ZipCode}";
+            return output;
+        }
     }
 }

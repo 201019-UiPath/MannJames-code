@@ -27,5 +27,11 @@ namespace Models
             this.PhoneNumber = null;
         }
 
+        public override string ToString()
+        {
+            string output = "";
+            output += $"{CustomerID} {FirstName} {LastName} {PhoneNumber}";
+            return output;
+        }
     }
 }
