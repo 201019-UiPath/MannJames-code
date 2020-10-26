@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Models;
 
@@ -7,10 +8,13 @@ namespace Libraries
 {
     public class OrderLib
     {
-        public Order ord1 = new Order(1,1,3,"3/18/2020");
-        public Order ord2 = new Order(2,1,2,"4/2/2020");
-        public Order ord3 = new Order(3,2,3,"4/17/2020");
-        public Order ord4 = new Order(4,1,1,"8/25/2020");
+        public List<Order> orderList = new List<Order>()
+        {
+            new Order(1, 1, 3, "3/18/2020"),
+            new Order(2, 1, 2, "4/2/2020"),
+            new Order(3, 2, 3, "4/17/2020"),
+            new Order(4, 1, 1, "8/25/2020")
+        };
 
         //list of products associated with order
         public List<Product> OrderProducts = new List<Product>()
@@ -22,7 +26,6 @@ namespace Libraries
             new Product(1, "Original", "Donuts", 1.99, 1, 6),
             new Product(2, "Glazed", "Donuts", 1.99, 1, 12),
             new Product(6, "Regular", "Cofee", 1.29, 1, 2),
-
 
             //order 2
             new Product(1, "Original", "Donuts", 1.99, 2, 12),
@@ -40,6 +43,6 @@ namespace Libraries
             new Product(2, "Glazed", "Donuts", 1.99, 4, 6),
             new Product(6, "Regular", "Cofee", 1.29, 4, 1)
         };
-
+        List<string> products = products.Select(x.Name).ToList();
     }
 }
