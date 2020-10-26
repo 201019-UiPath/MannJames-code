@@ -13,7 +13,7 @@ namespace BLL
             //prod1.productName.toString();
             Inventory inv = new Inventory();
             inv.Inventories();
-            OrderList ordList = new OrderList();
+            CustFiltering ordList = new CustFiltering();
             ordList.Orders();
         }
     }

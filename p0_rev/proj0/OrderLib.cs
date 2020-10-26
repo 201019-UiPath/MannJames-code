@@ -43,6 +43,5 @@ namespace Libraries
             new Product(2, "Glazed", "Donuts", 1.99, 4, 6),
             new Product(6, "Regular", "Cofee", 1.29, 4, 1)
         };
-        List<string> products = products.Select(x.Name).ToList();
     }
 }
