@@ -23,6 +23,8 @@ namespace Models
                 //add prod
                     //different lists for locations
 
+            //employee role
+
             //at least employee view and customer view
 
             //customer view
