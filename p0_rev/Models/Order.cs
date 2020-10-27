@@ -6,29 +6,19 @@ namespace Models
 {
     public class Order
     {
-        public int OrderID { get; set; }
-        public int LocationID { get; set; }
-        public int CustomerID { get; set; }
-        public string OrderDate { get; set; }
-        public string PickUpDate { get; set; }
-        public Boolean PickUp { get; set; }
-        public double TotalCost { get; set; }
+        int CustomerId;
+        int OrderId;
+        public List<OrdProduct> OProductList;
 
-        public Order(int OrderID, int LocationID, 
-            int CustomerID, string OrderDate)
+        public Order(int CustomerId, int OrderId, List<OrdProduct> OProductList)
         {
-            this.OrderID = OrderID;
-            this.LocationID = LocationID;
-            this.CustomerID = CustomerID;
-            this.OrderDate = OrderDate;
+            this.CustomerId = CustomerId;
+            this.OrderId = OrderId;
+            this.OProductList = OProductList;
         }
-
-        public Order()
+        public override string ToString()
         {
-            this.OrderID = 0;
-            this.LocationID = 0;
-            this.CustomerID = 0;
-            this.OrderDate = "00/00/0000";
+            return $"{CustomerId} {OrderId} {OProductList}";
         }
     }
 }

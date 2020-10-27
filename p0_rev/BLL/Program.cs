@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Libraries;
-using Models;
 
 namespace BLL
 {
     class Program
     {
-        public static void Main(String[] args)
+        static void Main(string[] args)
         {
-            //prod1.productName.toString();
-            Inventory inv = new Inventory();
-            inv.Inventories();
+            Console.WriteLine("Hello World!");
         }
     }
 }

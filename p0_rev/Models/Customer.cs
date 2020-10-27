@@ -6,26 +6,22 @@ namespace Models
 {
     public class Customer
     {
-        public int CustomerID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public String PhoneNumber { get; set; }
+        int CustomerId;
+        string FirstName;
+        string LastName;
+        int PhoneNumber;
 
-        public Customer(int CustomerID, string FirstName, string LastName, String PhoneNumber)
+        public Customer(int CustomerId, string FirstName, string LastName, int PhoneNumber)
         {
-            this.CustomerID = CustomerID;
+            this.CustomerId = CustomerId;
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.PhoneNumber = PhoneNumber;
         }
 
-        public Customer()
+        public override string ToString()
         {
-            this.CustomerID = 0;
-            this.FirstName = null;
-            this.LastName = null;
-            this.PhoneNumber = null;
+            return $"{ CustomerId } { FirstName } { LastName } { PhoneNumber }";
         }
-
     }
 }

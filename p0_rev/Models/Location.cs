@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Dynamic;
 using System.Text;
 
 namespace Models
 {
     public class Location
     {
-        public int LocationID { get; set; }
-        public string Address { get; set; }
-        public string CityName { get; set; }
-        public string StateName { get; set; }
-        public string ZipCode { get; set; }
+        int LocationId { get; set;}
+        string Address { get; set; }
+        string City { get; set; }
+        string State { get; set; }
+        int ZipCode { get; set; }
+        public List<InvProduct> IProductList;
 
-        public Location(int LocationID, string Address, string CityName, 
-            string StateName, string ZipCode)
+        public Location(int LocationId, string Address, string City, string State, int ZipCode, List<InvProduct>IProductList)
         {
-            this.LocationID = LocationID;
+            this.LocationId = LocationId;
             this.Address = Address;
-            this.CityName = CityName;
-            this.StateName = StateName;
+            this.City = City;
+            this.State = State;
             this.ZipCode = ZipCode;
+            this.IProductList = IProductList;
         }
 
-        public Location()
+        public override string ToString()
         {
-            this.LocationID = 0;
-            this.Address = null;
-            this.CityName = null;
-            this.StateName = null;
-            this.ZipCode = null;
+            return $"{LocationId} {Address} {City} {State} {ZipCode} {IProductList}";
         }
     }
 }
