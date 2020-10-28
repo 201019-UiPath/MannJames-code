@@ -10,6 +10,7 @@ namespace Models
         int OrderId;
         string OProductName;
         int Quantity;
+        public virtual Order Order { get; set; }
 
         public OrdProduct(int OProductId, int OrderId, string OProductName, int Quantity)
         {

@@ -12,21 +12,25 @@ namespace Models
         string City { get; set; }
         string State { get; set; }
         int ZipCode { get; set; }
-        public List<InvProduct> IProductList;
+        //inventory
+        public virtual ICollection<InvProduct> IProducts { get; set; }
+        //employees
+        public virtual ICollection<Employee> Employees { get; set; }
 
-        public Location(int LocationId, string Address, string City, string State, int ZipCode, List<InvProduct>IProductList)
+
+        public Location(int LocationId, string Address, string City, string State, int ZipCode)
         {
             this.LocationId = LocationId;
             this.Address = Address;
             this.City = City;
             this.State = State;
             this.ZipCode = ZipCode;
-            this.IProductList = IProductList;
+            //this.IProductList = IProductList;
         }
 
         public override string ToString()
         {
-            return $"{LocationId} {Address} {City} {State} {ZipCode} {IProductList}";
+            return $"{LocationId} {Address} {City} {State} {ZipCode}";
         }
     }
 }

@@ -10,6 +10,10 @@ namespace Models
         string FirstName;
         string LastName;
         int PhoneNumber;
+        //orders
+        public virtual ICollection<Order> Orders { get; set; }
+        //card payments
+        public virtual ICollection<CardPayment> Cards { get; set; }
 
         public Customer(int CustomerId, string FirstName, string LastName, int PhoneNumber)
         {

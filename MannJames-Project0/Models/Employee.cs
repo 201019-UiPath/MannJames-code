@@ -10,6 +10,7 @@ namespace Models
         string FirstName;
         string LastName;
         int LocationId;
+        public virtual Location Location { get; set; }
 
         public Employee(int EmployeeId, string FirstName, string LastName, int LocationId)
         {

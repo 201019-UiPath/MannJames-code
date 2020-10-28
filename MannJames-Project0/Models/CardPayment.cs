@@ -14,6 +14,7 @@ namespace Models
         string City { get; set; }
         string State { get; set; }
         int ZipCode { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public CardPayment(int CardNumber, int CustomerId, int CVV, string ExpirationDate, 
             string BillingAddress, string City, string State, int ZipCode)

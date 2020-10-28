@@ -1,12 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
+using System.Data.Common;
 using System.Text;
+using System.Linq;
+using Models;
+using Library;
+using System.Collections.Generic;
 
 namespace BLL
 {
-    class Inventory
+    public class Inventory
     {
-        //locationid
-        //productid
+/*        foreach(var prod in GetAllProducts())
+        {
+            Response.Write($"{prod.}");
+        }*/
+
     }
 }

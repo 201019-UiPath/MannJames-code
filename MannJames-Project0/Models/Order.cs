@@ -8,17 +8,18 @@ namespace Models
     {
         int CustomerId;
         int OrderId;
-        public List<OrdProduct> OProductList;
+        public virtual ICollection<OrdProduct> OProducts {get;set;}
+      
 
-        public Order(int CustomerId, int OrderId, List<OrdProduct> OProductList)
+        public Order(int CustomerId, int OrderId)
         {
             this.CustomerId = CustomerId;
             this.OrderId = OrderId;
-            this.OProductList = OProductList;
+           // this.OProductList = OProductList;
         }
         public override string ToString()
         {
-            return $"{CustomerId} {OrderId} {OProductList}";
+            return $"{CustomerId} {OrderId}";
         }
     }
 }
