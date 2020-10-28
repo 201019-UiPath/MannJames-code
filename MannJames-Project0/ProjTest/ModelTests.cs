@@ -69,5 +69,14 @@ namespace ProjTest
             var orderproduct = new OrdProduct(30, 20, "fishies", 10);
             Assert.NotNull(orderproduct.ToString());
         }
+
+        [Fact]
+        public void CardTest()
+        {
+            //ordproduct
+            var cardpayment = new CardPayment(1234567890, 1, 123, "12/31/2020",
+            "11001 NW 25 ST", "Coral Springs", "FL", 33076);
+            Assert.NotNull(cardpayment.ToString());
+        }
     }
 }
