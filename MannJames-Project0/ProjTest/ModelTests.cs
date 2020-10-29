@@ -44,9 +44,10 @@ namespace ProjTest
             };
 
                 //location
-                var location = new Location(5, "testLoc", "A", "B", 6, InvProdList);
-            Assert.NotNull(location.ToString());
-            }
+                var location1 = new Location(5, "testLoc", "A", "B", 6);
+                Assert.NotNull(location1.ToString());
+                var location2 = new Location(10, "testLoc", "d", "c", 11);
+        }
 
         [Fact]
         public void OrderTest()
@@ -58,7 +59,7 @@ namespace ProjTest
             };
 
             //order
-            var order = new Order(1,1, OrderList);
+            var order = new Order(1,1);
             Assert.NotNull(order.ToString());
         }
 

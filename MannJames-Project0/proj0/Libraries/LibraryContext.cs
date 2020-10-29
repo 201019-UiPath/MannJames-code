@@ -8,7 +8,7 @@ namespace Libraries
 {
     public class LibraryContext: DbContext
     {
-        public DbSet<CardPayment> Card { get; set; }
+        /*public DbSet<CardPayment> Card { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<InvProduct> InvProject { get; set; }
@@ -25,7 +25,7 @@ namespace Libraries
         {
             base.OnModelCreating(modelBuilder);
         }
-/*
+*//*
         modelBuilder.Entity<Publisher>(entity =>
       {
         entity.HasKey(e => e.ID);
