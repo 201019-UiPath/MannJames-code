@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using Models;
 
-namespace ProjTest
+namespace Libraries
 {
-    public  class TestInventoryLibrary
+    public class Class1
     {
         public int locId = 1;
-        public Location location1 = new Location(1, "testLoc", "A", "B", 6);
-        
-        public Location location2 = new Location(2, "testLoc", "d", "c", 11);
+
         IEnumerable<InvProduct> InvProdList = new List<InvProduct>()
             {
                 new InvProduct(1,1,"spam",7),
