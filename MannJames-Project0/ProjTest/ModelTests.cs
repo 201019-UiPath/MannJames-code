@@ -44,9 +44,9 @@ namespace ProjTest
             };
 
                 //location
-                var location1 = new Location(5, "testLoc", "A", "B", 6);
+                var location1 = new Location(5, "testLoc", "A", "B", 33006,"hours","number");
                 Assert.NotNull(location1.ToString());
-                var location2 = new Location(10, "testLoc", "d", "c", 11);
+                var location2 = new Location(10, "testLoc", "d", "c", 33011, "hours", "number");
         }
 
         [Fact]
@@ -78,6 +78,20 @@ namespace ProjTest
             var cardpayment = new CardPayment(1234567890, 1, 123, "12/31/2020",
             "11001 NW 25 ST", "Coral Springs", "FL", 33076);
             Assert.NotNull(cardpayment.ToString());
+        }
+
+        [Fact]
+        public void EmployeeLogin()
+        {
+            var employeelogin = new EmployeeLogin(1,"Manager","password1");
+            Assert.NotNull(employeelogin.ToString());
+        }
+
+        [Fact]
+        public void CustomerLogin()
+        {
+            var customerlogin = new CustomerLogin(2, "password2");
+            Assert.NotNull(customerlogin.ToString());
         }
     }
 }

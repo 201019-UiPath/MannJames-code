@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Models;
-using Libraries;
 using System.Security.Cryptography.X509Certificates;
 
 namespace BLL
@@ -21,8 +20,8 @@ namespace BLL
 
         IList<Location> locations = new List<Location>()
         {
-            new Location(1, "testLoc", "A", "B", 6, "M-S: 10-18:00"),
-            new Location(2, "testLoc", "d", "c", 11, "hours")
+            new Location(1, "testLoc", "A", "B", 6, "", "M-S: 10-18:00"),
+            new Location(2, "testLoc", "d", "c", 11, "", "hours")
         };
 
             var resultLocation = locations.Where(l => l.LocationId == 1).ToList<Location>();

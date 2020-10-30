@@ -13,14 +13,15 @@ namespace Models
         public string State { get; set; }
         public int ZipCode { get; set; }
         public string Hours { get; set; }
-        
-        public virtual ICollection<InvProduct> IProducts { get; set; }
+        public string PhoneNumber { get; set; }
+
+    public virtual ICollection<InvProduct> IProducts { get; set; }
         //employees
         public virtual ICollection<Employee> Employees { get; set; }
 
 
         public Location(int LocationId, string Address, string City, string State, 
-            int ZipCode, string Hours)
+            int ZipCode, string Hours, string PhoneNumber)
         {
             this.LocationId = LocationId;
             this.Address = Address;
@@ -28,6 +29,7 @@ namespace Models
             this.State = State;
             this.ZipCode = ZipCode;
             this.Hours = Hours;
+            this.PhoneNumber = PhoneNumber;
         }
 
         public Location()
@@ -36,13 +38,14 @@ namespace Models
             this.Address = null;
             this.City = null;
             this.State = null;
-            this.ZipCode = 00000;
+            this.ZipCode = 10000;
             this.Hours = null;
+            this.PhoneNumber = null;
         }
 
         public override string ToString()
         {
-            return $"{LocationId} {Address} {City} {State} {ZipCode} {Hours}";
+            return $"{LocationId} {Address} {City} {State} {ZipCode} {Hours} {PhoneNumber}";
         }
     }
 }

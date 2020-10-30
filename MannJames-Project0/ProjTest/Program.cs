@@ -4,10 +4,10 @@ namespace UI
 {
     class Program
     {
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
-            StartingMenu start = new StartingMenu();
-            start.StartMenu();
+            //StartingMenu start = new StartingMenu();
+            //start.StartMenu();
             //customer
                 //location
                     //inv
@@ -41,6 +41,6 @@ namespace UI
                     //loginCustomer
                         //orderlists (customerView)
                         //edit info
-        }
+        }*/
     }
 }
