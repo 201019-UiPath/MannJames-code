@@ -7,7 +7,7 @@ namespace BLL
 {
     class ViewLocations
     {
-        public IList<string> locations = new List<string>()
+        public List<string> locations = new List<string>()
         {
             //import locations
             new Location(1, "testLoc", "A", "B", 6, "", "M-S: 10-18:00").ToString(),

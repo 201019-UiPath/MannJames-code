@@ -6,8 +6,8 @@ namespace Models
 {
     public class InvProduct
     {
-        int IProductId;
-        int LocationId;
+        public int IProductId;
+        public int LocationId;
         string IProductName;
         int Quantity;
         public virtual Location Location { get; set; }

@@ -16,7 +16,8 @@ namespace BLL
         public void LocationFilter(int locId) {
             //https://www.tutorialsteacher.com/linq/linq-method-syntax
 
-            //getLocations() to be added
+            //collect locations from source
+            //not viewlocations
             IList<Location> locations = new List<Location>()
             {
                 new Location(1, "testLoc", "A", "B", 6, "", "M-S: 10-18:00"),
