@@ -9,7 +9,7 @@ namespace UI
     {
         //put in location
         //viewinventoryforlocid
-        LocationList locations = new LocationList();
+        SelectLocation locations = new SelectLocation();
         //locations
         //inventory(locationid)
         //create(order)?

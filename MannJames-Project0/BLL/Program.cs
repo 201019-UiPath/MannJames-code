@@ -7,8 +7,9 @@ namespace BLL
     {
         static void Main(string[] args)
         {
-
-            //LocationList();
+            Console.WriteLine("Please input a location number: ");
+            SelectLocation locList = new SelectLocation();
+            locList.LocationFilter();
         }
     }
 }
