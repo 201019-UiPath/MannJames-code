@@ -5,6 +5,7 @@ using Models;
 
 namespace BLL
 {
+    //Locations should have records of order history
     class ViewLocations
     {
         public List<string> locations = new List<string>()
@@ -21,5 +22,5 @@ namespace BLL
                 Console.WriteLine(result.ToString());
             }
         }
-}
+    }
 }

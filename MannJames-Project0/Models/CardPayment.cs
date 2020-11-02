@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
 {
     public class CardPayment
     {
-        int CardNumber { get; set; }
-        int CustomerId { get; set; }
-        int CVV { get; set; }
-        string ExpirationDate { get; set; }
-        string BillingAddress { get; set; }
-        string City { get; set; }
-        string State { get; set; }
-        int ZipCode { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int CardNumber { get; set; }
+
+        [Key]
+        [Column(Order=2)]
+        public int CustomerId { get; set; }
+        public int CVV { get; set; }
+        public string ExpirationDate { get; set; }
+        public string BillingAddress { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public int ZipCode { get; set; }
         public virtual Customer Customer { get; set; }
 
         public CardPayment(int CardNumber, int CustomerId, int CVV, string ExpirationDate, 

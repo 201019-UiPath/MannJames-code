@@ -7,7 +7,7 @@ namespace Models
     public class OrdProduct
     {
         int OProductId;
-        int OrderId;
+        public int OrderId;
         string OProductName;
         int Quantity;
         public virtual Order Order { get; set; }

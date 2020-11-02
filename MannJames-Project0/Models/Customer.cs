@@ -6,10 +6,10 @@ namespace Models
 {
     public class Customer
     {
-        int CustomerId;
-        string FirstName;
-        string LastName;
-        int PhoneNumber;
+        public int CustomerId;
+        public string FirstName;
+        public string LastName;
+        public int PhoneNumber;
         //orders
         public virtual ICollection<Order> Orders { get; set; }
         //card payments

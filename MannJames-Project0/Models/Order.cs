@@ -6,11 +6,10 @@ namespace Models
 {
     public class Order
     {
-        int CustomerId;
-        int OrderId;
+        public int CustomerId;
+        public int OrderId;
         public virtual ICollection<OrdProduct> OProducts {get;set;}
       
-
         public Order(int CustomerId, int OrderId)
         {
             this.CustomerId = CustomerId;
