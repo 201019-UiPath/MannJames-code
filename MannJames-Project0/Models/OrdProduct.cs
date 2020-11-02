@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
 {
     public class OrdProduct
     {
+        [Key]
+        [Required]
         public int OProductId;
+        [ForeignKey("OrderProduct_FK")]
+        [Required]
         public int OrderId;
+        [Required]
         public string OProductName;
         public int Quantity;
         public virtual Order Order { get; set; }

@@ -9,17 +9,23 @@ namespace Models
     public class CardPayment
     {
         [Key]
-        [Column(Order = 1)]
+        [Required]
         public int CardNumber { get; set; }
 
-        [Key]
-        [Column(Order=2)]
+        [ForeignKey("CustId_FK")]
+        [Required]
         public int CustomerId { get; set; }
+        [Required]
         public int CVV { get; set; }
+        [Required]
         public string ExpirationDate { get; set; }
+        [Required]
         public string BillingAddress { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
         public string State { get; set; }
+        [Required]
         public int ZipCode { get; set; }
         public virtual Customer Customer { get; set; }
 
@@ -34,6 +40,17 @@ namespace Models
             this.City = City;
             this.State = State;
             this.ZipCode = ZipCode;
+        }
+        public CardPayment()
+        {
+            this.CardNumber = 0;
+            this.CustomerId = 0;
+            this.CVV = 0;
+            this.ExpirationDate = null;
+            this.BillingAddress = null;
+            this.City = null;
+            this.State = null;
+            this.ZipCode = 00000;
         }
     }
 }

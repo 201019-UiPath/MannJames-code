@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Dynamic;
 using System.Text;
 
@@ -7,15 +8,23 @@ namespace Models
 {
     public class Location
     {
+        [Required]
+        [Key]
         public int LocationId { get; set;}
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
         public string State { get; set; }
+        [Required]
         public int ZipCode { get; set; }
+        [Required]
         public string Hours { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
 
-    public virtual ICollection<InvProduct> IProducts { get; set; }
+        public virtual ICollection<InvProduct> IProducts { get; set; }
         //employees
         public virtual ICollection<Employee> Employees { get; set; }
 

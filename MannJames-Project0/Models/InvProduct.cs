@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
 {
     public class InvProduct
     {
+        [Key]
+        [Required]
         public int IProductId;
+        [Required]
+        [ForeignKey("FK_Inventory")]
         public int LocationId;
+        [Required]
         public string IProductName;
         public int Quantity;
         public virtual Location Location { get; set; }

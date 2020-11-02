@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
 {
     public class Order
     {
+        [ForeignKey("Order_FK_Cust")]
+        [Required]
         public int CustomerId;
-
         [Key]
+        [Required]
         public int OrderId;
-
+        [ForeignKey("Order_FK_Loc")]
+        [Required]
         public int LocationId;
         public virtual ICollection<OrdProduct> OProducts {get;set;}
+        public virtual Customer Customer { get; set; }
+        public virtual Location Location { get; set; }
       
         public Order(int CustomerId, int OrderId, int LocationId)
         {
@@ -21,6 +27,13 @@ namespace Models
             this.OrderId = OrderId;
             this.LocationId = LocationId;
            // this.OProductList = OProductList;
+        }
+
+        public Order()
+        {
+            this.CustomerId = 0;
+            this.OrderId = 0;
+            this.LocationId = 0;
         }
         public override string ToString()
         {

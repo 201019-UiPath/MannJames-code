@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Models
 {
     public class Customer
     {
+        [Key]
+        [Required]
         public int CustomerId;
+        [Required]
         public string FirstName;
+        [Required]
         public string LastName;
+        [Required]
         public int PhoneNumber;
         //orders
         public virtual ICollection<Order> Orders { get; set; }
@@ -21,6 +27,14 @@ namespace Models
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.PhoneNumber = PhoneNumber;
+        }
+
+        public Customer()
+        {
+            this.CustomerId = 0;
+            this.FirstName = null;
+            this.LastName = null;
+            this.PhoneNumber = 0000000000;
         }
 
         public override string ToString()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
@@ -8,9 +9,14 @@ namespace Models
     public class CustomerLogin
     {
         [Key]
+        [Required]
         public string Username { get; set; }
+        [ForeignKey("FK_CustLogin")]
+        [Required]
         public int CustomerId { get; set; }
+        [Required]
         public string Password { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public CustomerLogin()
         {
