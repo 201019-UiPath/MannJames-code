@@ -1,4 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+using Models;
 
 namespace StoreDB
 {
@@ -6,7 +13,7 @@ namespace StoreDB
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
             //this handles only CRUD
             //BLL handles exceptions and validations!
             //switch cases in UI

@@ -9,7 +9,7 @@ namespace BLL
         {
             Console.WriteLine("Please input a location number: ");
             SelectLocation locList = new SelectLocation();
-            locList.LocationFilter();
+            //locList.LocationFilter();
         }
     }
 }
