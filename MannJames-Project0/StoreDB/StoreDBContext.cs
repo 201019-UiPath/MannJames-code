@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+using Models;
 
-namespace Models
+namespace StoreDB
 {
     class StoreDBContext : DbContext
     {
@@ -33,7 +36,14 @@ namespace Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(connectionString);
+                var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+                var connectionString = configuration
+                    .GetConnectionString("StoreDB");
+                optionsBuilder.UseNpgsql(connectionString);
             }
         }
 
