@@ -91,30 +91,76 @@ namespace Models
                     .IsRequired()
                     .HasMaxLength(10);
 
-            }
-
-
-
-           );
-
-        /*
-                    modelBuilder.Entity<OrderPizza>(entity =>
-            {
-                entity.ToTable("OrderPizza", "Order");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderPizza)
-                    .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_OrderPizza_OrderId");
-
-                entity.HasOne(d => d.Pizza)
-                    .WithMany(p => p.OrderPizza)
-                    .HasForeignKey(d => d.PizzaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_OrderPizza_PizzaId");
             });
-        */
+
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.Property(e => e.EmployeeId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(15);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(15);
+
+                entity.Property(e => e.LocationId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                
+                entity.HasOne(l => l.Location)
+                    .WithMany(m => m.Employees)
+                    .HasForeignKey(l => l.LocationId);
+
+            });
+
+            modelBuilder.Entity<CustomerLogin>(entity =>
+            {
+                entity.Property(e => e.CustomerId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(15);
+            });
+
+            modelBuilder.Entity<EmployeeLogin>(entity =>
+            {
+                entity.Property(e => e.EmployeeId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Role)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(15);
+            });
+
+            /*
+                        modelBuilder.Entity<OrderPizza>(entity =>
+                {
+                    entity.ToTable("OrderPizza", "Order");
+
+                    entity.HasOne(d => d.Order)
+                        .WithMany(p => p.OrderPizza)
+                        .HasForeignKey(d => d.OrderId)
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_OrderPizza_OrderId");
+
+                    entity.HasOne(d => d.Pizza)
+                        .WithMany(p => p.OrderPizza)
+                        .HasForeignKey(d => d.PizzaId)
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_OrderPizza_PizzaId");
+                });
+            */
 
         }
     }
