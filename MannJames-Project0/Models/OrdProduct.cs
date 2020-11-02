@@ -6,10 +6,10 @@ namespace Models
 {
     public class OrdProduct
     {
-        int OProductId;
+        public int OProductId;
         public int OrderId;
-        string OProductName;
-        int Quantity;
+        public string OProductName;
+        public int Quantity;
         public virtual Order Order { get; set; }
 
         public OrdProduct(int OProductId, int OrderId, string OProductName, int Quantity)

@@ -110,7 +110,7 @@ namespace Models
                 entity.Property(e => e.LocationId)
                     .IsRequired()
                     .HasMaxLength(10);
-                
+
                 entity.HasOne(l => l.Location)
                     .WithMany(m => m.Employees)
                     .HasForeignKey(l => l.LocationId);
@@ -119,6 +119,10 @@ namespace Models
 
             modelBuilder.Entity<CustomerLogin>(entity =>
             {
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
                 entity.Property(e => e.CustomerId)
                     .IsRequired()
                     .HasMaxLength(10);
@@ -130,6 +134,10 @@ namespace Models
 
             modelBuilder.Entity<EmployeeLogin>(entity =>
             {
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
                 entity.Property(e => e.EmployeeId)
                     .IsRequired()
                     .HasMaxLength(10);
@@ -143,25 +151,68 @@ namespace Models
                     .HasMaxLength(15);
             });
 
-            /*
-                        modelBuilder.Entity<OrderPizza>(entity =>
-                {
-                    entity.ToTable("OrderPizza", "Order");
+            modelBuilder.Entity<InvProduct>(entity =>
+            {
+                entity.Property(e => e.IProductId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.IProductName)
+                    .IsRequired()
+                    .HasMaxLength(15);
+                entity.Property(e => e.LocationId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.Quantity);
+            });
 
-                    entity.HasOne(d => d.Order)
-                        .WithMany(p => p.OrderPizza)
-                        .HasForeignKey(d => d.OrderId)
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_OrderPizza_OrderId");
+            modelBuilder.Entity<OrdProduct>(entity =>
+            {
+                entity.Property(e => e.OProductId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.OProductName)
+                    .IsRequired()
+                    .HasMaxLength(15);
+                entity.Property(e => e.OrderId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.Quantity);
+            });
 
-                    entity.HasOne(d => d.Pizza)
-                        .WithMany(p => p.OrderPizza)
-                        .HasForeignKey(d => d.PizzaId)
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_OrderPizza_PizzaId");
-                });
-            */
+            modelBuilder.Entity<Location>(entity =>
+            {
+                entity.Property(e => e.LocationId)
+                     .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.Address)
+                     .IsRequired()
+                    .HasMaxLength(25);
+                entity.Property(e => e.City)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.State)
+                    .IsRequired()
+                    .HasMaxLength(20);
+                entity.Property(e => e.ZipCode)
+                     .IsRequired()
+                    .HasMaxLength(5);
+                entity.Property(e => e.Hours)
+                    .IsRequired()
+                    .HasMaxLength(25);
+            });
 
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(e => e.CustomerId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.LocationId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+                entity.Property(e => e.OrderId)
+                    .IsRequired()
+                    .HasMaxLength(10);
+            });
         }
     }
 }
