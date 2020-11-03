@@ -23,5 +23,11 @@ namespace BLL
             return getProductsTask.Result;
         }
         //invproduct getinvprod by loc
+        public List<InvProduct> GetInvByLocation(int locId)
+        {
+            Task<List<InvProduct>> getProductsTask =
+                inventoryRepo.GetInvByLocation(locId);
+            return getProductsTask.Result;
+        }
     }
 }

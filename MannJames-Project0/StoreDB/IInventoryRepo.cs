@@ -10,6 +10,6 @@ namespace StoreDB
     {
         void AddProduct(InvProduct invProduct);
         Task<List<InvProduct>> GetInvProducts();
-        InvProduct GetInvByLocation(int locId);
+        Task<List<InvProduct>> GetInvByLocation(int locId);
     }
 }

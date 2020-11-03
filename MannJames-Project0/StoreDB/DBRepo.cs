@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StoreDB
 {
-    public class DBRepo : ICustomersRepo, IEmployeesRepo
+    public class DBRepo : ICustomersRepo, IEmployeesRepo, 
+        IInventoryRepo, ILocationRepo,IOrderRepo
     {
         private StoreDBContext context;
         public DBRepo(StoreDBContext context)
@@ -83,6 +84,24 @@ namespace StoreDB
         public Task<List<Employee>> GetEmployeesByLocation(int locId)
         {
             return context.Employee.Where(x => x.LocationId == locId)
+                .ToListAsync();
+        }
+
+        public void AddProduct(InvProduct invProduct)
+        {
+            context.InvProducts.AddAsync(invProduct);
+            context.SaveChangesAsync();
+        }
+
+        public Task<List<InvProduct>> GetInvProducts()
+        {
+            return context.InvProducts.Select(x => x)
+                .ToListAsync();
+        }
+
+        public Task<List<InvProduct>> GetInvByLocation(int locId)
+        {
+            return context.InvProducts.Where(x => x.LocationId == locId)
                 .ToListAsync();
         }
     }

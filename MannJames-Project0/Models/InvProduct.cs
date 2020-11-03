@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Models
 {
@@ -38,6 +39,11 @@ namespace Models
         public override string ToString()
         {
             return $"{IProductId}, {LocationId}, {IProductName}, {Quantity}";
+        }
+
+        public static explicit operator InvProduct(Task<List<InvProduct>> v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
