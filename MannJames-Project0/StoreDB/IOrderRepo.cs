@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Build.Utilities;
 using Models;
 
 namespace StoreDB
@@ -8,16 +10,15 @@ namespace StoreDB
     public interface IOrderRepo
     {
         //creating order
-        void AddProduct(OrdProduct ordProduct);
-        List<OrdProduct> GetOrdProducts();
+        Task<List<OrdProduct>> GetOrdProducts();
 
         //add order
         void AddOrder(Order order);
-        void AddOrdProducts(OrdProduct ordProduct);
+        void AddProduct(OrdProduct ordProduct);
 
         //get orders
-        Order GetOrdersByLocation(int locId);
-        OrdProduct GetProductsByOrder(int orderId);
-        Customer GetOrdersByCustomer(int customerId);
+        Task<List<Order>> GetOrdersByLocation(int locId);
+        Task<List<OrdProduct>> GetProductsByOrder(int orderId);
+        Task<List<Order>> GetOrdersByCustomer(int customerId);
     }
 }
