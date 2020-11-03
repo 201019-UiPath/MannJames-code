@@ -10,7 +10,7 @@ namespace UI
         private string userInput;
         private ILocationRepo locationRepo;
 
-        public LocationMenu(ILocationRepo repo, )
+        //public LocationMenu(ILocationRepo repo, )
 
         public void Start()
         {

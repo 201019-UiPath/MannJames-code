@@ -10,7 +10,10 @@ namespace StoreDB
         void AddEmployee(Employee employee);
         List<Employee> GetAllEmployees();
         Employee GetEmployeeById(int employeeId);
-        Customer GetEmployeeByLocation(int locId);
-        Customer GetEmployeeByName(string firstName, string lastName);
+        Employee GetEmployeeByLocation(int locId);
+        Employee GetEmployeeByName(string firstName, string lastName);
+        Manager GetAllManagers();
+        Manager GetManagerById(int managerId);
+        Manager GetManagerByEId(int employeeId);
     }
 }

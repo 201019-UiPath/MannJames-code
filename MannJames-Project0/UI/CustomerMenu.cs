@@ -15,8 +15,8 @@ namespace UI
 
         public CustomerMenu(StoreDBContext context)
         {
-            this.newCustomer = new NewCustomer(new DBRepo(context), new MessagingService());
-            this.returnCustomerMenu = new ReturnCustomerMenu(new DBRepo(context), new MessagingService());
+            //this.newCustomer = new NewCustomer(new DBRepo(context), new MessagingService());
+            //this.returnCustomerMenu = new ReturnCustomerMenu(new DBRepo(context), new MessagingService());
 
         }
 

@@ -19,6 +19,7 @@ namespace Models
         [ForeignKey("FK_Employee")]
         public int LocationId { get; set; }
         public virtual Location Location { get; set; }
+        public virtual Manager Manager { get; set; }
 
         public Employee(int EmployeeId, string FirstName, string LastName, int LocationId)
         {

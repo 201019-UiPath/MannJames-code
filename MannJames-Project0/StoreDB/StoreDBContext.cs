@@ -25,6 +25,7 @@ namespace StoreDB
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrdProduct> OrdProduct { get; set; }
+        public virtual DbSet<Manager> Manager { get; set; }
 
         protected override void OnConfiguring
             (DbContextOptionsBuilder optionsBuilder)
@@ -44,6 +45,14 @@ namespace StoreDB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Manager>(entity =>
+            {
+                entity.Property(e => e.ManagerId)
+                    .HasMaxLength(10);
+                entity.Property(e => e.EmployeeId)
+                    .HasMaxLength(10);
+            });
+
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(e => e.CustomerId)

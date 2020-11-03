@@ -28,6 +28,12 @@ namespace StoreDB
             context.SaveChangesAsync();
         }
 
+        public void AddManager(Manager manager)
+        {
+            context.Manager.AddAsync(manager);
+            context.SaveChangesAsync();
+        }
+
         public void AddLocation(Location location)
         {
             context.Location.AddAsync(location);
