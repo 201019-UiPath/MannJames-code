@@ -1,21 +1,19 @@
-﻿using Models;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace StoreDB
 {
-    public class DBRepo : //ICustomersRepo, //IEmployeesRepo,
-        IInventoryRepo, ILocationRepo, IOrderRepo
+    public class DBRepo : ICustomersRepo, IEmployeesRepo
     {
         private StoreDBContext context;
         public DBRepo(StoreDBContext context)
         {
             this.context = context;
         }
+
         public void AddCustomer(Customer customer)
         {
             context.Customer.AddAsync(customer);
@@ -34,52 +32,10 @@ namespace StoreDB
             context.SaveChangesAsync();
         }
 
-        public void AddLocation(Location location)
-        {
-            context.Location.AddAsync(location);
-            context.SaveChangesAsync();
-        }
-
-        public void AddOrder(Order order)
-        {
-            context.Order.AddAsync(order);
-            context.SaveChangesAsync();
-        }
-
-        public void AddOrdProducts(OrdProduct ordproduct)
-        {
-            context.OrdProduct.AddAsync(ordproduct);
-            context.SaveChangesAsync();
-        }
-
-        public void AddProduct(InvProduct invProduct)
-        {
-            context.InvProducts.AddAsync(invProduct);
-            context.SaveChangesAsync();
-        }
-
-        public void AddProduct(OrdProduct ordProduct)
-        {
-            context.OrdProduct.AddAsync(ordProduct);
-            context.SaveChangesAsync();
-        }
-
-        public List<Customer> GetAllCustomers()
+        public Task<List<Customer>> GetAllCustomers()
         {
             return context.Customer.Select(x => x)
-                .ToList();
-        }
-
-        public List<Employee> GetAllEmployees()
-        {
-            return context.Employee.Select(x => x)
-                .ToList();
-        }
-
-        public List<Location> GetAllLocations()
-        {
-            return context.Location.Select(x => x)
-                .ToList();
+                .ToListAsync();
         }
 
         public Customer GetCustomerById(int customerId)
@@ -88,68 +44,46 @@ namespace StoreDB
                 .Where(x => x.CustomerId == customerId);
         }
 
-/*        public List<Customer> GetCustomersByName(string firstName, 
-            string lastName)
-        {
-            return (Customer)context.Customer
-                .Where(x => x.FirstName == firstName, lastName);
-        }*/
-
         public Customer GetCustomerByPhoneNumber(int phoneNumber)
         {
-            throw new NotImplementedException();
+            return (Customer)context.Customer
+                .Where(x => x.PhoneNumber == phoneNumber);
         }
 
         public Employee GetEmployeeById(int employeeId)
         {
-            throw new NotImplementedException();
+            return (Employee)context.Employee
+                .Where(x => x.EmployeeId == employeeId);
         }
 
-        public Customer GetEmployeeByLocation(int locId)
+        public Manager GetManagerByEId(int employeeId)
         {
-            throw new NotImplementedException();
+            return (Manager)context.Manager
+                .Where(x => x.EmployeeId == employeeId);
         }
 
-/*        public Customer GetEmployeeByName(string firstName, string lastName)
+        public Manager GetManagerByMId(int managerId)
         {
-//
-        }*/
-
-        public InvProduct GetInvByLocation(int locId)
-        {
-            throw new NotImplementedException();
+            return (Manager)context.Manager
+                .Where(x => x.ManagerId == managerId);
         }
 
-        public List<InvProduct> GetInvProducts()
+        public Task<List<Employee>> GetAllEmployees()
         {
-            return context.InvProducts.Select(x => x)
-                .ToList();
+            return context.Employee.Select(x => x)
+                .ToListAsync();
         }
 
-        public Location GetLocationById(int locId)
+        public Task<List<Manager>> GetAllManagers()
         {
-            throw new NotImplementedException();
+            return context.Manager.Select(x => x)
+                .ToListAsync();
         }
 
-        public Customer GetOrdersByCustomer(int customerId)
+        public Task<List<Employee>> GetEmployeesByLocation(int locId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Order GetOrdersByLocation(int locId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<OrdProduct> GetOrdProducts()
-        {
-            return context.OrdProduct.Select(x => x)
-                .ToList();
-        }
-
-        public OrdProduct GetProductsByOrder(int orderId)
-        {
-            throw new NotImplementedException();
+            return context.Employee.Where(x => x.LocationId == locId)
+                .ToListAsync();
         }
     }
 }

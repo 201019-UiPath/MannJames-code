@@ -2,15 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace StoreDB
 {
     public interface ICustomersRepo
     {
-        void AddCustomer(Customer customer);
-        List<Customer> GetAllCustomers();
+        Task<List<Customer>> GetAllCustomers();
         Customer GetCustomerById(int customerId);
         Customer GetCustomerByPhoneNumber(int phoneNumber);
-        List<Customer> GetCustomersByName(string firstName, string lastName);
+        void AddCustomer(Customer customer);
     }
 }
