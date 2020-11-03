@@ -5,23 +5,19 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Models;
 
 namespace StoreDB
 {
     public class StoreDBContext : DbContext
     {
-        private readonly ILoggerFactory loggerFactory;
-
         public StoreDBContext()
         {
         }
         public StoreDBContext(
-            DbContextOptions<StoreDBContext> options, ILoggerFactory loggerFactory)
+            DbContextOptions<StoreDBContext> options)
             : base(options)
         {
-            this.loggerFactory = loggerFactory;
         }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
