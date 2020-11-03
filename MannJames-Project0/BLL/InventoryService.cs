@@ -1,10 +1,27 @@
-﻿using System;
+﻿using Models;
+using StoreDB;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL
 {
-    class InventoryService
+    public class InventoryService
     {
+        private IInventoryRepo inventoryRepo;
+        public InventoryService(IInventoryRepo inventoryRepo)
+        {
+            this.inventoryRepo = inventoryRepo;
+        }
+        public void AddProduct(InvProduct invProduct)
+        {
+            inventoryRepo.AddProduct(invProduct);
+        }
+        public List<InvProduct> GetInvProducts()
+        {
+            Task<List<InvProduct>> getProductsTask =
+                inventoryRepo.GetInvProducts();
+            return getProductsTask.Result;
+        }
+        //invproduct getinvprod by loc
     }
 }

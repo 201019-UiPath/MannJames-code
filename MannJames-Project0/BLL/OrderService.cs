@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Models;
+using StoreDB;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL
 {
-    class OrderService
+    public class OrderService
     {
     }
 }
