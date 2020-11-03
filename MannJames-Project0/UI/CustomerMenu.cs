@@ -15,9 +15,12 @@ namespace UI
 
         public CustomerMenu(StoreDBContext context)
         {
-            this.newCustomer = new NewCustomer(new DBRepo(context), new MessagingService());
-            this.returnCustomerMenu = new ReturnCustomerMenu(new DBRepo(context), new MessagingService());
-
+            this.newCustomer = new NewCustomer
+                (new DBRepo(context), new MessagingService(), 
+                new BLL.CustomerService(repo));
+            this.returnCustomerMenu = new ReturnCustomerMenu
+                (new DBRepo(context), new MessagingService(),
+                new BLL.CustomerService(repo));
         }
 
         public void Start()
@@ -42,6 +45,7 @@ namespace UI
                         Console.WriteLine("Thank you for visiting! Until next time!");
                         break;
                     default:
+                        service.InvalidInputMessage();
                         break;
                 }
             }

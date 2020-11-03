@@ -1,6 +1,7 @@
 ﻿using System;
 using StoreDB;
 using BLL;
+using Models;
 
 namespace UI
 {
@@ -20,10 +21,14 @@ namespace UI
         }
 
         public void Start() {
-        
+            Console.WriteLine("What is your customer number?");
+            int customerId = Convert.ToInt32(Console.ReadLine());
+            task.GetCustomerById(customerId);
+            Customer customer = task.GetCustomerById(customerId);
             do
             {
-                Console.WriteLine("Welcome!");
+                Console.WriteLine($" Welcome {customer.FirstName}!");
+                
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("[0] Make Order");
                 Console.WriteLine("[1] View Past Orders");

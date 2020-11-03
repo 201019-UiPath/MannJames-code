@@ -54,6 +54,7 @@ namespace UI
                         //goBack
                         break;
                     default:
+                        service.InvalidInputMessage();
                         break;
                 }
             } while (!(userInput.Equals("1")));
