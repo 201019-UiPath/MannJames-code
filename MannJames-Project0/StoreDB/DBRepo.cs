@@ -129,12 +129,6 @@ namespace StoreDB
             context.SaveChangesAsync();
         }
 
-        public Task<List<OrdProduct>> GetOrdProducts()
-        {
-            return context.OrdProduct.Select(x => x)
-                .ToListAsync();
-        }
-
         public void AddOrder(Order order)
         {
             context.Order.AddAsync(order);

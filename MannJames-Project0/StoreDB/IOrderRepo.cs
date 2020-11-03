@@ -9,9 +9,6 @@ namespace StoreDB
 {
     public interface IOrderRepo
     {
-        //creating order
-        Task<List<OrdProduct>> GetOrdProducts();
-
         //add order
         void AddOrder(Order order);
         void AddProduct(OrdProduct ordProduct);
