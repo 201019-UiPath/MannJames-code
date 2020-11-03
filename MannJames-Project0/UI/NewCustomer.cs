@@ -14,11 +14,11 @@ namespace UI
         Customer customer = new Customer();
         private string userInput;
         private IMessagingService service;
-        private StoreService task;
+        private CustomerService task;
         private ICustomersRepo custRepo;
 
         public NewCustomer
-            (ICustomersRepo custRepo, IMessagingService service, StoreService task)
+            (ICustomersRepo custRepo, IMessagingService service, CustomerService task)
         {
             this.custRepo = custRepo;
             this.task = task;

@@ -8,11 +8,11 @@ namespace UI
     {
         private string userInput;
         private IMessagingService service;
-        private StoreService task;
+        private CustomerService task;
         private ICustomersRepo custRepo;
 
         public ReturnCustomerMenu
-            (ICustomersRepo custRepo, IMessagingService service, StoreService task)
+            (ICustomersRepo custRepo, IMessagingService service, CustomerService task)
         {
             this.custRepo = custRepo;
             this.task = task;

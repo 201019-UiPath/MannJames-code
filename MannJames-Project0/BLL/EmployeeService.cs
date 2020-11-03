@@ -1,44 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Models;
+﻿using Models;
 using StoreDB;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class StoreService
+    class EmployeeService
     {
-        #region Customer
-        private ICustomersRepo custRepo;
-        public StoreService(ICustomersRepo custRepo)
-        {
-            this.custRepo = custRepo;
-        }
-        public List<Customer> GetAllCustomers()
-        {
-            Task<List<Customer>> getCustomersTask = custRepo
-                .GetAllCustomers();
-            return getCustomersTask.Result;
-        }
-        public Customer GetCustomerById(int customerId)
-        {
-            Customer resultCustomer = custRepo.GetCustomerById(customerId);
-            return resultCustomer;
-        }
-        public Customer GetCustomerByPhoneNumber(int phoneNumber)
-        {
-            Customer resultCustomer = custRepo
-                .GetCustomerByPhoneNumber(phoneNumber);
-            return resultCustomer;
-        }
-        public void AddCustomer(Customer customer)
-        {
-            custRepo.AddCustomer(customer);
-        }
-        #endregion
-
         #region Employee
         private IEmployeesRepo empRepo;
-        public StoreService(IEmployeesRepo empRepo)
+        public EmployeeService(IEmployeesRepo empRepo)
         {
             this.empRepo = empRepo;
         }
@@ -89,6 +62,15 @@ namespace BLL
                 .GetManagerByEId(employeeId);
             return resultEmployee;
         }
+        #endregion
+
+        #region Inventory
+        #endregion
+
+        #region Location
+        #endregion
+
+        #region Order
         #endregion
     }
 }
