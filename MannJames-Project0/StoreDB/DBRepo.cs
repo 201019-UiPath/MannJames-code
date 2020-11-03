@@ -12,10 +12,10 @@ namespace StoreDB
         IInventoryRepo, ILocationRepo, IOrderRepo
     {
         private StoreDBContext context;
-/*        public DBRepo(StoreDBContext context)
+        public DBRepo(StoreDBContext context)
         {
             this.context = context;
-        }*/
+        }
         public void AddCustomer(Customer customer)
         {
             context.Customer.AddAsync(customer);

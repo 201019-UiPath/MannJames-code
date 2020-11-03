@@ -9,7 +9,7 @@ using Models;
 
 namespace StoreDB
 {
-    class StoreDBContext : DbContext
+    public class StoreDBContext : DbContext
     {
         public StoreDBContext()
         {

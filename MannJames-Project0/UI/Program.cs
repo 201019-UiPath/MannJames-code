@@ -6,7 +6,7 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            StartingMenu start = new StartingMenu();
+            MainMenu start = new MainMenu();
             start.StartMenu();
             //customer
                 //location
