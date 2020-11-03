@@ -12,14 +12,6 @@ namespace UI
         Customer customer = new Customer();
         private string userInput;
 
-/*        public MainMenu(StoreDBContext context)
-        {
-            this.customerMenu = new CustomerMenu(new DBRepo(context), new MessagingService());
-            this.employeeMenu = new EmployeeMenu(new DBRepo(context), new MessagingService());
-            this.locationMenu = new LocationMenu(new DBRepo(context), new MessagingService());
-
-        }*/
-
         public void Start()
         {
             Console.WriteLine("Welcome! Please fill in the following info to get started!");

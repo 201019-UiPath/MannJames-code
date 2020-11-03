@@ -15,7 +15,7 @@ namespace UI
 
         public MainMenu(StoreDBContext context)
         {
-/*            this.customerMenu = new CustomerMenu(new DBRepo(context),new MessagingService());
+/*          this.customerMenu = new CustomerMenu(new DBRepo(context),new MessagingService());
             this.employeeMenu = new EmployeeMenu(new DBRepo(context), new MessagingService());
             this.locationMenu = new LocationMenu(new DBRepo(context), new MessagingService());
 */
@@ -41,16 +41,18 @@ namespace UI
                         customerMenu.Start();
                         break;
                     case "2":
-                       // employeeMenu.Start();
+                        employeeMenu.Start();
                         break;
                     case "3":
-                        Console.WriteLine("Thank you for visiting! Until next time!");
+                        Console.WriteLine
+                        (
+                            "So long and thanks for all the fish!"
+                        );
                         break;
                     default:
                         break;
                 }
             }
-
             while (!(userInput.Equals("3")));
         }
         //location?

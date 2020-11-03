@@ -15,8 +15,8 @@ namespace UI
 
         public CustomerMenu(StoreDBContext context)
         {
-            //this.newCustomer = new NewCustomer(new DBRepo(context), new MessagingService());
-            //this.returnCustomerMenu = new ReturnCustomerMenu(new DBRepo(context), new MessagingService());
+            this.newCustomer = new NewCustomer(new DBRepo(context), new MessagingService());
+            this.returnCustomerMenu = new ReturnCustomerMenu(new DBRepo(context), new MessagingService());
 
         }
 
@@ -26,7 +26,7 @@ namespace UI
             {
                 Console.WriteLine("Welcome! Are you a returning customer?");
                 Console.WriteLine("[0] No. Please sign me up!");
-                Console.WriteLine("[1] Yes. Take me home!");
+                Console.WriteLine("[1] Yes. Take me home country roads!");
                 Console.WriteLine("[2] Exit");
                 userInput = Console.ReadLine();
 
