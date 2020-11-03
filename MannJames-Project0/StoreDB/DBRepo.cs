@@ -104,5 +104,61 @@ namespace StoreDB
             return context.InvProducts.Where(x => x.LocationId == locId)
                 .ToListAsync();
         }
+
+        public void AddLocation(Location location)
+        {
+            throw new System.NotImplementedException();
+            context.InvProducts.AddAsync(invProduct);
+            context.SaveChangesAsync();
+        }
+
+        public Task<List<Location>> GetAllLocations()
+        {
+            throw new System.NotImplementedException();
+            return context.Customer.Select(x => x)
+    .ToListAsync();
+        }
+
+        public Location GetLocationById(int locId)
+        {
+            throw new System.NotImplementedException();
+            return (Manager)context.Manager
+    .Where(x => x.ManagerId == managerId);
+        }
+
+        public void AddProduct(OrdProduct ordProduct)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<OrdProduct>> GetOrdProducts()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddOrder(Order order)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void AddOrdProduct(OrdProduct ordProduct)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<Order>> GetOrdersByLocation(int locId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<OrdProduct>> GetProductsByOrder(int orderId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<List<Order>> GetOrdersByCustomer(int customerId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
