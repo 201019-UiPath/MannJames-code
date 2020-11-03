@@ -1,35 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using StoreDB;
+using BLL;
 
 namespace UI
 {
     public class ReturnCustomerMenu : IMenu
     {
         private string userInput;
+        private IMessagingService service;
+        private StoreService task;
+        private ICustomersRepo custRepo;
 
-/*        public MainMenu(StoreDBContext context)
+        public ReturnCustomerMenu
+            (ICustomersRepo custRepo, IMessagingService service, StoreService task)
         {
-            this.customerMenu = new CustomerMenu(new DBRepo(context), new MessagingService());
-            this.employeeMenu = new EmployeeMenu(new DBRepo(context), new MessagingService());
-            this.locationMenu = new LocationMenu(new DBRepo(context), new MessagingService());
+            this.custRepo = custRepo;
+            this.task = task;
+            this.service = service;
+        }
 
-        }*/
-
-        public void Start()
-        {
+        public void Start() {
+        
             do
             {
+                Console.WriteLine("Welcome!");
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("[0] Make Order");
                 Console.WriteLine("[1] View Past Orders");
                 Console.WriteLine("[2] Exit");
 
                 userInput = Console.ReadLine();
+                
                 switch (userInput)
                 {
                     case "0":
-                        //create order
+                        //make order
                         break;
                     case "1":
                         //view orders
