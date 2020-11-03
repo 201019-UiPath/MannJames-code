@@ -10,13 +10,13 @@ namespace Models
     {
         [Key]
         [Required]
-        public int OProductId;
+        public int OProductId { get; set; }
         [ForeignKey("OrderProduct_FK")]
         [Required]
-        public int OrderId;
+        public int OrderId { get; set; }
         [Required]
-        public string OProductName;
-        public int Quantity;
+        public string OProductName { get; set; }
+        public int Quantity { get; set; }
         public virtual Order Order { get; set; }
 
         public OrdProduct(int OProductId, int OrderId, string OProductName, int Quantity)

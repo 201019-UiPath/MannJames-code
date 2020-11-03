@@ -9,17 +9,16 @@ namespace Models
     {
         [Key]
         [Required]
-        public int CustomerId;
+        public int CustomerId { get; set; }
         [Required]
-        public string FirstName;
+        public string FirstName { get; set; }
         [Required]
-        public string LastName;
+        public string LastName { get; set; }
         [Required]
-        public int PhoneNumber;
+        public int PhoneNumber { get; set; }
         //orders
         public virtual ICollection<Order> Orders { get; set; }
         //card payments
-        public virtual ICollection<CardPayment> Cards { get; set; }
 
         public Customer(int CustomerId, string FirstName, string LastName, int PhoneNumber)
         {

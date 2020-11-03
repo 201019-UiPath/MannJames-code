@@ -10,14 +10,14 @@ namespace Models
     {
         [Key]
         [Required]
-        public int EmployeeId;
+        public int EmployeeId { get; set; }
         [Required]
-        public string FirstName;
+        public string FirstName { get; set; }
         [Required]
-        public string LastName;
+        public string LastName { get; set; }
         [Required]
         [ForeignKey("FK_Employee")]
-        public int LocationId;
+        public int LocationId { get; set; }
         public virtual Location Location { get; set; }
 
         public Employee(int EmployeeId, string FirstName, string LastName, int LocationId)

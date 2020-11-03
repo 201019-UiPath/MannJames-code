@@ -9,8 +9,6 @@ namespace UI
     {
         public void StartMenu()
         {
-            Login log = new Login();
-            log.LogIn();
         }
         //location?
             //goes to locationinput

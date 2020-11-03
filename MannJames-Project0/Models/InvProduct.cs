@@ -10,13 +10,13 @@ namespace Models
     {
         [Key]
         [Required]
-        public int IProductId;
+        public int IProductId { get; set; }
         [Required]
         [ForeignKey("FK_Inventory")]
-        public int LocationId;
+        public int LocationId { get; set; }
         [Required]
-        public string IProductName;
-        public int Quantity;
+        public string IProductName { get; set; }
+        public int Quantity { get; set; }
         public virtual Location Location { get; set; }
 
         public InvProduct(int IProductId, int LocationId, string IProductName, int Quantity)

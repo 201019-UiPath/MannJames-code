@@ -11,6 +11,6 @@ namespace StoreDB
         List<Customer> GetAllCustomers();
         Customer GetCustomerById(int customerId);
         Customer GetCustomerByPhoneNumber(int phoneNumber);
-        Customer GetCustomerByName(string firstName, string lastName);
+        List<Customer> GetCustomersByName(string firstName, string lastName);
     }
 }

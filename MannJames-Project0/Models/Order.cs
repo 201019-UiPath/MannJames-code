@@ -8,15 +8,16 @@ namespace Models
 {
     public class Order
     {
-        [ForeignKey("Order_FK_Cust")]
-        [Required]
-        public int CustomerId;
         [Key]
         [Required]
-        public int OrderId;
+        public int OrderId { get; set; }
+
+        [ForeignKey("Order_FK_Cust")]
+        [Required]
+        public int CustomerId { get; set; }
         [ForeignKey("Order_FK_Loc")]
         [Required]
-        public int LocationId;
+        public int LocationId { get; set; }
         public virtual ICollection<OrdProduct> OProducts {get;set;}
         public virtual Customer Customer { get; set; }
         public virtual Location Location { get; set; }
