@@ -18,15 +18,17 @@ namespace Models
         [ForeignKey("Order_FK_Loc")]
         [Required]
         public int LocationId { get; set; }
+        public DateTime OrderDate { get; set; }
         public virtual ICollection<OrdProduct> OProducts {get;set;}
         public virtual Customer Customer { get; set; }
         public virtual Location Location { get; set; }
       
-        public Order(int CustomerId, int OrderId, int LocationId)
+        public Order(int CustomerId, int OrderId, int LocationId, DateTime OrderDate)
         {
             this.CustomerId = CustomerId;
             this.OrderId = OrderId;
             this.LocationId = LocationId;
+            this.OrderDate = OrderDate;
            // this.OProductList = OProductList;
         }
 
@@ -35,6 +37,7 @@ namespace Models
             this.CustomerId = 0;
             this.OrderId = 0;
             this.LocationId = 0;
+            this.OrderDate = DateTime.Now;
         }
         public override string ToString()
         {

@@ -115,6 +115,8 @@ namespace StoreDB
                     .HasMaxLength(10);
                 entity.Property(e => e.LocationId)
                     .HasMaxLength(10);
+                entity.Property(e => e.OrderDate)
+                    .HasMaxLength(20);
             });
         }
     }
