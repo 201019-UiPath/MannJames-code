@@ -11,7 +11,7 @@ namespace StoreDB
     public class DBRepo : ICustomersRepo, IEmployeesRepo, 
         IInventoryRepo, ILocationRepo,IOrderRepo
     {
-        private StoreDBContext context;
+        private readonly StoreDBContext context;
         public DBRepo(StoreDBContext context)
         {
             this.context = context;

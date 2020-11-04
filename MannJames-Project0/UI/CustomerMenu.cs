@@ -20,7 +20,6 @@ namespace UI
         public CustomerMenu(DBRepo repo)
         {
             this.repo = repo;
-            this.service = service;
             this.newCustomer = new NewCustomer
                 (new DBRepo(context), new MessagingService());
             this.returnCustomerMenu = new ReturnCustomerMenu
