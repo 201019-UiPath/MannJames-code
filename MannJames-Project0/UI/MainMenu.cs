@@ -43,7 +43,7 @@ namespace UI
                         customerMenu.Start();
                         break;
                     case "2":
-                        //employeeMenu.Start();
+                        employeeMenu.Start();
                         break;
                     case "3":
                         Console.WriteLine
