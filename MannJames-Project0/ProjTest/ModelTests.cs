@@ -72,23 +72,11 @@ namespace ProjTest
         }
 
         [Fact]
-        public void CardTest()
+        public void ManagerTest()
         {
-
+            var manager = new Manager(1, 1);
+            Assert.NotNull(manager.ToString());
         }
 
-        [Fact]
-        public void EmployeeLogin()
-        {
-           // var employeelogin = new EmployeeLogin(1,"Manager","password1");
-           // Assert.NotNull(employeelogin.ToString());
-        }
-
-        [Fact]
-        public void CustomerLogin()
-        {
-           // var customerlogin = new CustomerLogin(2, "password2");
-           // Assert.NotNull(customerlogin.ToString());
-        }
     }
 }

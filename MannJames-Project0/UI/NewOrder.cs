@@ -15,9 +15,6 @@ namespace UI
         private string userInput;
         private IMessagingService service;
         private CustomerService custTask;
-        //add repo for inventory
-        //add locations
-        //pull inventories
         private IOrderRepo orderRepo;
         private ReturnCustomerMenu returnCustomerMenu;
         private ILocationRepo locationRepo;

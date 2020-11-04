@@ -10,15 +10,15 @@ namespace UI
     {
         private string userInput;
         private CustomerMenu customerMenu;
-        //private EmployeeMenu employeeMenu;
+        private EmployeeMenu employeeMenu;
         private LocationMenu locationMenu;
         private MessagingService service;
         public MainMenu(StoreDBContext context)
         {
             this.customerMenu = new CustomerMenu
                 (new DBRepo(context));
-            //this.employeeMenu = new EmployeeMenu
-              //  (new DBRepo(context), new MessagingService());
+            this.employeeMenu = new EmployeeMenu
+                (new DBRepo(context), new MessagingService());
             this.locationMenu = new LocationMenu
                 (new DBRepo(context), new MessagingService());
         }

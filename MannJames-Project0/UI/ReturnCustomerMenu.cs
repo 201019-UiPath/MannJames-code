@@ -2,6 +2,7 @@
 using StoreDB;
 using BLL;
 using Models;
+using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace UI
 {
@@ -12,23 +13,25 @@ namespace UI
         private CustomerService CustomerService;
         private ICustomersRepo custRepo;
         private NewOrder newOrder;
-        private ViewOrders viewOrders;
         private DBRepo dBRepo;
         private CustomerService customerService;
         private int customerId;
+        private IOrderRepo orderRepo;
+        private OrderService orderService;
 
         public ReturnCustomerMenu
-            (DBRepo dBRepo, IMessagingService service)
+            (ICustomersRepo custRepo, IMessagingService service)
         {
-            this.dBRepo = dBRepo;
+            this.custRepo = custRepo;
             this.service = service;
+            this.orderRepo = orderRepo;
+            this.orderService = orderService;
         }
 
         public void Start() {
             Console.WriteLine("What is your customer number?");
             int customerId = Int32.Parse(Console.ReadLine());
-            //Customer customer = 
-            string name = CustomerService.GetCustomerById(customerId)
+            string name = customerService.GetCustomerById(customerId)
                 .FirstName;
             do
             {
@@ -47,7 +50,7 @@ namespace UI
                         newOrder.Start();
                         break;
                     case "1":
-                        viewOrders.Start();
+                        orderService.GetOrdersByCustomer(customerId);
                         break;
                     case "2":
                         Console.WriteLine("Thank you for visiting! Until next time!");

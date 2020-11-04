@@ -41,11 +41,6 @@ namespace UI
                 locationId = Int32.Parse(Console.ReadLine());
 
                 invService.GetInvByLocation(locationId);
-                //List<InvProduct> products = invService.GetInvProducts();
-/*                foreach (var p in products)
-                {
-                    Console.WriteLine(p.ToString());
-                }*/
                 Console.WriteLine("Pick a number!");
                 Console.WriteLine("[0] Back please!");
                 Console.WriteLine("[1] Exit");
@@ -65,9 +60,7 @@ namespace UI
                         break;
                 }
             }
-
             while (!(userInput.Equals("1")));
-
         }
     }
 }

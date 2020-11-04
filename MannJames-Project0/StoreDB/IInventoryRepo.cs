@@ -12,5 +12,6 @@ namespace StoreDB
         Task<List<InvProduct>> GetInvProducts();
         public List<InvProduct> GetInvByLocation(int locId);
         InvProduct GetInvProductById(int iProductId);
+        void EditProductAmnt(int productId, int quantity);
     }
 }

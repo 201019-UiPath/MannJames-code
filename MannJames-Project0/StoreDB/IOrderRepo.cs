@@ -17,5 +17,9 @@ namespace StoreDB
         Task<List<Order>> GetOrdersByLocation(int locId);
         Task<List<OrdProduct>> GetProductsByOrder(int orderId);
         Task<List<Order>> GetOrdersByCustomer(int customerId);
+
+        List<Order> GetOrderByDateEmployee(bool asc, int locId);
+        List<Order> GetOrderByDateCustomer(bool asc, int custId);
+
     }
 }

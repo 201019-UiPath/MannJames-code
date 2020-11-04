@@ -113,12 +113,6 @@ namespace StoreDB
                 .ToListAsync();
         }
 
-/*        public Location GetLocationById(int locId)
-        {
-            return context.Location
-                .Single(x => x.LocationId == locId);
-        }*/
-
         public void AddProduct(OrdProduct ordProduct)
         {
             context.OrdProduct.AddAsync(ordProduct);
@@ -168,6 +162,39 @@ namespace StoreDB
         InvProduct IInventoryRepo.GetInvProductById(int iProductId)
         {
             throw new System.NotImplementedException();
+        }
+
+        void IInventoryRepo.EditProductAmnt(int productId, int quantity)
+        {
+            var product = context.InvProducts.Single(x => x.IProductId == productId);
+            product.Quantity += quantity;
+            context.SaveChangesAsync();
+        }
+
+        List<Order> IOrderRepo.GetOrderByDateEmployee(bool asc, int locId)
+        {
+            if(asc)
+            {
+                return context.Order.OrderBy(o => o.OrderDate)
+                    .Where(o => o.LocationId == locId).ToList();
+            }
+            else
+            {
+                return context.Order.OrderByDescending(o => o.OrderDate).ToList();
+            }
+        }
+
+        List<Order> IOrderRepo.GetOrderByDateCustomer(bool asc, int custId)
+        {
+            if (asc)
+            {
+                return context.Order.OrderBy(o => o.OrderDate)
+                    .Where(o => o.LocationId == custId).ToList();
+            }
+            else
+            {
+                return context.Order.OrderByDescending(o => o.OrderDate).ToList();
+            }
         }
     }
 }

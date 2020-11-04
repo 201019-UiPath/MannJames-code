@@ -27,5 +27,10 @@ namespace Models
             this.ManagerId = 0;
             this.EmployeeId = 0;
         }
+
+        public override string ToString()
+        {
+            return $"{ManagerId} {EmployeeId}";
+        }
     }
 }

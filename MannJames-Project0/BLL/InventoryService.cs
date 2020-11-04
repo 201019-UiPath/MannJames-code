@@ -33,5 +33,9 @@ namespace BLL
             string productName = productVar.ToString();
             return productName;
         }
+        public void EditProductAmnt(int productId, int quantity)
+        {
+            repo.EditProductAmnt(productId, quantity);
+        }
     }
 }

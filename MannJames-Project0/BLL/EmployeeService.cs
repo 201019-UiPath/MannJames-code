@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class EmployeeService
+    public class EmployeeService
     {
         #region Employee
         private IEmployeesRepo empRepo;
