@@ -26,10 +26,17 @@ namespace Models
             this.OProductName = OProductName;
             this.Quantity = Quantity;
         }
+        public OrdProduct()
+        {
+            this.OProductId = 0;
+            this.OrderId = 0;
+            this.OProductName = null;
+            this.Quantity = 0;
+        }
 
         public override string ToString()
         {
-            return $"{OProductId}, {OrderId}, {OProductName}, { Quantity}";
+            return $"{OProductName}";
         }
     }
 }

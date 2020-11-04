@@ -8,6 +8,6 @@ namespace StoreDB
     {
         void AddLocation(Location location);
         Task<List<Location>> GetAllLocations();
-        Location GetLocationById(int locId);
+/*        Location GetLocationById(int locId);*/
     }
 }

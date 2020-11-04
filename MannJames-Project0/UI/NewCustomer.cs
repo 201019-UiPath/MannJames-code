@@ -10,18 +10,17 @@ namespace UI
 {
     public class NewCustomer : IMenu
     {
-
         Customer customer = new Customer();
         private string userInput;
         private IMessagingService service;
         private CustomerService task;
         private ICustomersRepo custRepo;
+        private CustomerMenu customerMenu;
 
         public NewCustomer
-            (ICustomersRepo custRepo, IMessagingService service, CustomerService task)
+            (ICustomersRepo custRepo, IMessagingService service)
         {
             this.custRepo = custRepo;
-            this.task = task;
             this.service = service;
         }
 
@@ -51,7 +50,7 @@ namespace UI
                         task.AddCustomer(customer);
                         break;
                     case "1":
-                        //goBack
+                        customerMenu.Start();
                         break;
                     default:
                         service.InvalidInputMessage();

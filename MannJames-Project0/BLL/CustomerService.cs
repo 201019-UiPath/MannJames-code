@@ -21,14 +21,12 @@ namespace BLL
         }
         public Customer GetCustomerById(int customerId)
         {
-            Customer resultCustomer = custRepo.GetCustomerById(customerId);
-            return resultCustomer;
+            return custRepo.GetCustomerById(customerId);
         }
         public Customer GetCustomerByPhoneNumber(int phoneNumber)
         {
-            Customer resultCustomer = custRepo
+            return custRepo
                 .GetCustomerByPhoneNumber(phoneNumber);
-            return resultCustomer;
         }
         public void AddCustomer(Customer customer)
         {

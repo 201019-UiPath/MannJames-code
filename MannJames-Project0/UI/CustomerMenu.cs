@@ -1,4 +1,5 @@
-﻿using StoreDB;
+﻿using BLL;
+using StoreDB;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,19 +9,22 @@ namespace UI
     public class CustomerMenu: IMenu
     {
         private string userInput;
-        private ICustomersRepo repo;
+        private DBRepo repo;
         private IMessagingService service;
+        private CustomerMenu customerMenu;
         private NewCustomer newCustomer;
         private ReturnCustomerMenu returnCustomerMenu;
+        private StoreDBContext context;
+        private CustomerService customerService;
 
-        public CustomerMenu(StoreDBContext context)
+        public CustomerMenu(DBRepo repo)
         {
+            this.repo = repo;
+            this.service = service;
             this.newCustomer = new NewCustomer
-                (new DBRepo(context), new MessagingService(), 
-                new BLL.CustomerService(repo));
+                (new DBRepo(context), new MessagingService());
             this.returnCustomerMenu = new ReturnCustomerMenu
-                (new DBRepo(context), new MessagingService(),
-                new BLL.CustomerService(repo));
+                (new DBRepo(context), new MessagingService());
         }
 
         public void Start()

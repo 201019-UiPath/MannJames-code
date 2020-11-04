@@ -24,7 +24,7 @@ namespace Models
         [Required]
         public string PhoneNumber { get; set; }
 
-        public virtual ICollection<InvProduct> IProducts { get; set; }
+        public virtual ICollection<InvProduct> InvProducts { get; set; }
         //employees
         public virtual ICollection<Employee> Employees { get; set; }
 

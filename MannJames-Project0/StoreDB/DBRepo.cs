@@ -2,6 +2,8 @@
 using Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace StoreDB
@@ -41,8 +43,8 @@ namespace StoreDB
 
         public Customer GetCustomerById(int customerId)
         {
-            return (Customer)context.Customer
-                .Where(x => x.CustomerId == customerId);
+            return context.Customer
+                .Find(customerId);
         }
 
         public Customer GetCustomerByPhoneNumber(int phoneNumber)
@@ -99,12 +101,6 @@ namespace StoreDB
                 .ToListAsync();
         }
 
-        public Task<List<InvProduct>> GetInvByLocation(int locId)
-        {
-            return context.InvProducts.Where(x => x.LocationId == locId)
-                .ToListAsync();
-        }
-
         public void AddLocation(Location location)
         {
             context.Location.AddAsync(location);
@@ -117,11 +113,11 @@ namespace StoreDB
                 .ToListAsync();
         }
 
-        public Location GetLocationById(int locId)
+/*        public Location GetLocationById(int locId)
         {
-            return (Location)context.Location
-                .Where(x => x.LocationId == locId);
-        }
+            return context.Location
+                .Single(x => x.LocationId == locId);
+        }*/
 
         public void AddProduct(OrdProduct ordProduct)
         {
@@ -141,6 +137,7 @@ namespace StoreDB
                 .ToListAsync();
         }
 
+
         public Task<List<OrdProduct>> GetProductsByOrder(int orderId)
         {
             return context.OrdProduct.Where(x => x.OrderId == orderId)
@@ -151,6 +148,26 @@ namespace StoreDB
         {
             return context.Order.Where(x => x.CustomerId ==customerId )
                 .ToListAsync();
+        }
+
+        public string GetInvProductById(int iProductId)
+        {
+            var name = (InvProduct)context.InvProducts
+                .Where(x => x.IProductId == iProductId);
+            string productName = name.ToString();
+            return productName;
+        }
+
+
+        public List<InvProduct> GetInvByLocation(int locId)
+        {
+            return context.InvProducts
+                .Where(x => x.LocationId == locId).ToList();
+        }
+
+        InvProduct IInventoryRepo.GetInvProductById(int iProductId)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

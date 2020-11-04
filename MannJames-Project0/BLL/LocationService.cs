@@ -22,10 +22,10 @@ namespace BLL
                 locationRepo.GetAllLocations();
             return getProductsTask.Result;
         }
-        public Location GetLocationById(int locId)
+/*        public Location GetLocationById(int locId)
         {
             Location resultLocation = locationRepo.GetLocationById(locId);
             return resultLocation;
-        }
+        }*/
     }
 }

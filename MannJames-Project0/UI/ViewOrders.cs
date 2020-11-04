@@ -4,7 +4,11 @@ using System.Text;
 
 namespace UI
 {
-    class ViewOrder
+    public class ViewOrders : IMenu
     {
+        public void Start()
+        {
+            
+        }
     }
 }

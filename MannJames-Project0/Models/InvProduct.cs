@@ -38,12 +38,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"{IProductId}, {LocationId}, {IProductName}, {Quantity}";
-        }
-
-        public static explicit operator InvProduct(Task<List<InvProduct>> v)
-        {
-            throw new NotImplementedException();
+            return $"{IProductName}";
         }
     }
 }

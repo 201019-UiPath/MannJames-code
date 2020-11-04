@@ -9,29 +9,34 @@ namespace UI
     {
         private string userInput;
         private IMessagingService service;
-        private CustomerService task;
+        private CustomerService CustomerService;
         private ICustomersRepo custRepo;
+        private NewOrder newOrder;
+        private ViewOrders viewOrders;
+        private DBRepo dBRepo;
+        private CustomerService customerService;
+        private int customerId;
 
         public ReturnCustomerMenu
-            (ICustomersRepo custRepo, IMessagingService service, CustomerService task)
+            (DBRepo dBRepo, IMessagingService service)
         {
-            this.custRepo = custRepo;
-            this.task = task;
+            this.dBRepo = dBRepo;
             this.service = service;
         }
 
         public void Start() {
             Console.WriteLine("What is your customer number?");
-            int customerId = Convert.ToInt32(Console.ReadLine());
-            task.GetCustomerById(customerId);
-            Customer customer = task.GetCustomerById(customerId);
+            int customerId = Int32.Parse(Console.ReadLine());
+            //Customer customer = 
+            string name = CustomerService.GetCustomerById(customerId)
+                .FirstName;
             do
             {
-                Console.WriteLine($" Welcome {customer.FirstName}!");
+                Console.WriteLine($" Welcome {name}!");
                 
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine("[0] Make Order");
-                Console.WriteLine("[1] View Past Orders");
+                Console.WriteLine("[0] Make order");
+                Console.WriteLine("[1] View past orders");
                 Console.WriteLine("[2] Exit");
 
                 userInput = Console.ReadLine();
@@ -39,15 +44,16 @@ namespace UI
                 switch (userInput)
                 {
                     case "0":
-                        //make order
+                        newOrder.Start();
                         break;
                     case "1":
-                        //view orders
+                        viewOrders.Start();
                         break;
                     case "2":
                         Console.WriteLine("Thank you for visiting! Until next time!");
                         break;
                     default:
+                        service.InvalidInputMessage();
                         break;
                 }
             }

@@ -7,27 +7,31 @@ namespace BLL
 {
     public class InventoryService
     {
-        private IInventoryRepo inventoryRepo;
-        public InventoryService(IInventoryRepo inventoryRepo)
+        private IInventoryRepo repo;
+        public InventoryService(IInventoryRepo repo)
         {
-            this.inventoryRepo = inventoryRepo;
+            this.repo = repo;
         }
         public void AddProduct(InvProduct invProduct)
         {
-            inventoryRepo.AddProduct(invProduct);
+            repo.AddProduct(invProduct);
         }
         public List<InvProduct> GetInvProducts()
         {
             Task<List<InvProduct>> getProductsTask =
-                inventoryRepo.GetInvProducts();
+                repo.GetInvProducts();
             return getProductsTask.Result;
         }
-        //invproduct getinvprod by loc
         public List<InvProduct> GetInvByLocation(int locId)
         {
-            Task<List<InvProduct>> getProductsTask =
-                inventoryRepo.GetInvByLocation(locId);
-            return getProductsTask.Result;
+            return repo
+                .GetInvByLocation(locId);
+        }
+        public string GetInvProductById(int iProductId)
+        {
+            var productVar = repo.GetInvProductById(iProductId);
+            string productName = productVar.ToString();
+            return productName;
         }
     }
 }

@@ -16,42 +16,10 @@ namespace UI
             if (Log.Logger == null) 
             { throw new Exception("Logger not working."); }
 
-            //MainMenu start = new MainMenu();
-            //start.StartMenu();
-            //customer
-            //location
-            //inv
-            //view
-            //order
-            //custinfo
-            //orderlists
-            //employee
-            //location
-            //inv
-            //view
-            //edit
-            //custinfoList
-            //order
+            IMenu main = new MainMenu(new StoreDB.StoreDBContext());
+            main.Start();
 
 
-
-            //location
-            //inv
-            //view
-            //order
-            //login
-            //edit (employees only)
-            //login
-            //custinfo
-            //loginEmployee
-            //custinfoList (employees only)
-            //all orders
-            //open
-            //closed
-            //loginCustomer
-            //orderlists (customerView)
-            //edit info
-
-    }
+        }
     }
 }
