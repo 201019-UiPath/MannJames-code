@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreDB", "StoreDB\StoreDB.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreLib", "StoreLib\StoreLib.csproj", "{BA01C449-EC1D-4DE6-834B-23565D159957}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTest", "StoreTest\StoreTest.csproj", "{51C6A0DD-2B19-49F0-82F2-F870754D7447}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA01C449-EC1D-4DE6-834B-23565D159957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA01C449-EC1D-4DE6-834B-23565D159957}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA01C449-EC1D-4DE6-834B-23565D159957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C6A0DD-2B19-49F0-82F2-F870754D7447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C6A0DD-2B19-49F0-82F2-F870754D7447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C6A0DD-2B19-49F0-82F2-F870754D7447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C6A0DD-2B19-49F0-82F2-F870754D7447}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

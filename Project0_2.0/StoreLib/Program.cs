@@ -11,11 +11,11 @@ namespace StoreLib
         static void Main(string[] args)
         {
             //add and remove products here to test
-            StoreContext context = new StoreContext();
-            IProductRepo repo = new DBRepo(context);
-
+/*            StoreContext context = new StoreContext();
+            IProductRepo repo = new DBRepo(context);*/
+/*
             Product product = repo.GetProductByName("Sega MegaDrive");
-            Console.WriteLine(product.Price);
+            Console.WriteLine(product.Price);*/
 
 
         }
