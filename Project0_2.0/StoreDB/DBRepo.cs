@@ -106,11 +106,13 @@ namespace StoreDB
         public void AddInventoryItem(InventoryItem inventoryItem)
         {
             context.InventoryItems.Add(inventoryItem);
+            context.SaveChanges();
         }
 
         public void UpdateInventoryItem(InventoryItem inventoryItem)
         {
             context.InventoryItems.Update(inventoryItem);
+            context.SaveChanges();
         }
 
 /*        public InventoryItem GetInventoryItemById(int id)
@@ -136,6 +138,7 @@ namespace StoreDB
         public void DeleteInventoryItem(InventoryItem inventoryItem)
         {
             context.InventoryItems.Remove(inventoryItem);
+            context.SaveChanges();
         }
 
         public InventoryItem GetItemByLocationIdProductId(int locationId, int productId)
@@ -156,11 +159,13 @@ namespace StoreDB
         public void AddCartItem(CartItem cart)
         {
             context.CartItems.Add(cart);
+            context.SaveChanges();
         }
 
         public void UpdateCartItem(CartItem cartItem)
         {
             context.CartItems.Update(cartItem);
+            context.SaveChanges();
         }
 
         public CartItem GetCartItemById(int id)
@@ -181,6 +186,7 @@ namespace StoreDB
         public void DeleteCartItem(CartItem cart)
         {
             context.CartItems.Remove(cart);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -190,11 +196,13 @@ namespace StoreDB
         public void AddCart(Cart cart)
         {
             context.Carts.Add(cart);
+            context.SaveChanges();
         }
 
         public void UpdateCart(Cart cart)
         {
             context.Carts.Update(cart);
+            context.SaveChanges();
         }
 
         public Cart GetCartById(int id)
@@ -210,6 +218,7 @@ namespace StoreDB
         public void DeleteCart(Cart cart)
         {
             context.Carts.Remove(cart);
+            context.SaveChanges();
         }
     }
 }
