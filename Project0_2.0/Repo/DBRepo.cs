@@ -1,110 +1,204 @@
-﻿using Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Models;
+using Repos;
+using Serilog;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Repos
+namespace Repo
 {
-    public class DBRepo : ICustomerRepo, IEmployeeRepo, IInventoryProductRepo,
-        ILocationRepo, IOrderProductRepo, IOrderRepo
+    public class DBRepo : IRepository
     {
-        #region Customer
         public void AddCustomer(Customer customer)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Customer GetCustomerById(int customerId)
+        public void AddCustomerAsync(Customer customer)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-        #endregion
 
-        #region Employee
         public void AddEmployee(Employee employee)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public List<Employee> GetAllEmployeesByLocation(int locationId)
+        public void AddInventoryLineItem(InventoryProduct lineItem)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Employee GetEmployeeById(int employeeId)
+        public void AddManager(Manager manager)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        #endregion
-
-        #region InventoryProduct
-        public void AddProduct(InventoryProduct inventoryProduct)
+        public void AddNewProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public List<InventoryProduct> GetProducts(int locationId)
+        public void AddNewProductToStock(int newProductId, int locationId)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public InventoryProduct GetProductByName(string productName)
+        public void AddOrder(Order order)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-        #endregion
 
-        #region Location
-        public void AddLocation(Location location)
+        public void AddOrderAsync(Order order)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public List<Customer> GetAllCustomers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Customer>> GetAllCustomersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> GetAllEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Employee>> GetAllEmployeesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<InventoryProduct> GetAllInventoryProductsAtLocation(int locationId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<InventoryProduct>> GetAllInventoryProductssAtLocationAsync(int locationId)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Location> GetAllLocations()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Location GetLocationById(int locationId)
+        public Task<List<Location>> GetAllLocationsAsync()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-        #endregion
 
-        #region OrderProduct
-        public void AddProduct(OrderProduct orderProduct)
+        public List<Manager> GetAllManagers()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        List<OrderProduct> IOrderProductRepo.GetProducts(int orderId)
+        public Task<List<Manager>> GetAllManagersAsync()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        OrderProduct IOrderProductRepo.GetProductByName(string productName)
+        public List<Order> GetAllOrdersForCustomer(int customerId)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-        #endregion
 
-        #region Order
-        public void AddOrder(Order order)
+        public Task<List<Order>> GetAllOrdersForCustomerAsync(int customerID)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public List<Order> GetCustomerOrders(int customerId)
+        public List<Order> GetAllOrdersForLocation(int locationID)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public List<Order> GetLocationOrders(int locationId)
+        public Task<List<Order>> GetAllOrdersForLocationAsync(int locationId)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
-        #endregion
 
+        public List<Product> GetAllProducts()
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task<List<Product>> GetAllProductsAsync()
+        {
+            throw new NotImplementedException();
+        }
 
+        public Manager GetEmployeeById(int employeeId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Employee> GetEmployeeByIdAsync(int employeeId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Manager GetManagerByMId(int managerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Manager> GetManagerByMIdAsync(int managerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<OrderProduct> GetOrderedProductsInAnOrder(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<OrderProduct>> GetOrderedProductsInAnOrderAsync(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveInventoryLineItem(InventoryProduct lineItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveInventoryProductFromLocation(InventoryProduct lineItem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveInventoryProductFromLocation(List<InventoryProduct> lineItems)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveProductAtLocation(int removedProductId, int locationId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateInventoryLineItem(InventoryProduct lineItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

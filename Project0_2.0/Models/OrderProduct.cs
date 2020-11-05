@@ -5,19 +5,31 @@ namespace Models
 {
     public class OrderProduct
     {
-        [Key]
+
         [Required]
+        [ForeignKey("FK_ProductOrderProd")]
         public int ProductId { get; set; }
-        [ForeignKey("FK_ProductOrder")]
+        [Key]
         [Required]
         public int OrderId { get; set; }
         [Required]
-        public string ProductName { get; set; }
-        [Required]
         public int Quantity { get; set; }
         [Required]
-        public decimal Price { get; set; }
-
+        public virtual Product Product { get; set; }
         public virtual Order Order { get; set; }
+        internal OrderProduct
+           (int productId, int orderId, int quantity)
+        {
+            ProductId = productId;
+            OrderId = orderId;
+            Quantity = quantity;
+        }
+        public OrderProduct
+            (Order order, Product product, int quantity) 
+            : this(order.OrderId, product.ProductId, quantity)
+        {
+            Product = product;
+            Order = order;
+        }
     }
 }

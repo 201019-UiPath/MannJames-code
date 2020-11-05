@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Common;
 
 namespace Models
 {
@@ -18,6 +18,8 @@ namespace Models
         public int LocationId { get; set; }
         [Required]
         public decimal TotalCost { get; set; }
+        [Required]
+        public DateTime OrderDate { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual Location Location { get; set; }
