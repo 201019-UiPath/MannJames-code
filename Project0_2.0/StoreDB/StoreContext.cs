@@ -7,7 +7,7 @@ namespace StoreDB.Models
 {
     public class StoreContext : DbContext
     {
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<InventoryItem> InventoryItems { get; set; }

@@ -16,6 +16,7 @@ namespace StoreDB.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public UserType Type { get; set; }
+
         public List<Order> Orders { get; set; }
 
         public enum UserType

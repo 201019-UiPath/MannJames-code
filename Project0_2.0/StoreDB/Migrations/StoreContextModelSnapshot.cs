@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using StoreDB;
+using StoreDB.Models;
 
 namespace StoreDB.Migrations
 {
@@ -19,7 +19,7 @@ namespace StoreDB.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("Models.Cart", b =>
+            modelBuilder.Entity("StoreDB.Models.Cart", b =>
                 {
                     b.Property<int>("CartId")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace StoreDB.Migrations
                     b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("Models.CartItem", b =>
+            modelBuilder.Entity("StoreDB.Models.CartItem", b =>
                 {
                     b.Property<int>("CIId")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace StoreDB.Migrations
                     b.ToTable("CartItems");
                 });
 
-            modelBuilder.Entity("Models.InventoryItem", b =>
+            modelBuilder.Entity("StoreDB.Models.InventoryItem", b =>
                 {
                     b.Property<int>("IIId")
                         .ValueGeneratedOnAdd()
@@ -89,7 +89,7 @@ namespace StoreDB.Migrations
                     b.ToTable("InventoryItems");
                 });
 
-            modelBuilder.Entity("Models.LineItem", b =>
+            modelBuilder.Entity("StoreDB.Models.LineItem", b =>
                 {
                     b.Property<int>("LIId")
                         .ValueGeneratedOnAdd()
@@ -117,7 +117,7 @@ namespace StoreDB.Migrations
                     b.ToTable("LineItems");
                 });
 
-            modelBuilder.Entity("Models.Location", b =>
+            modelBuilder.Entity("StoreDB.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd()
@@ -144,7 +144,7 @@ namespace StoreDB.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("Models.Order", b =>
+            modelBuilder.Entity("StoreDB.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
@@ -172,7 +172,7 @@ namespace StoreDB.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Models.Product", b =>
+            modelBuilder.Entity("StoreDB.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -183,15 +183,14 @@ namespace StoreDB.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<string>("ProductName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Models.User", b =>
+            modelBuilder.Entity("StoreDB.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -224,76 +223,76 @@ namespace StoreDB.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Models.Cart", b =>
+            modelBuilder.Entity("StoreDB.Models.Cart", b =>
                 {
-                    b.HasOne("Models.User", "User")
+                    b.HasOne("StoreDB.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.CartItem", b =>
+            modelBuilder.Entity("StoreDB.Models.CartItem", b =>
                 {
-                    b.HasOne("Models.Cart", "Cart")
+                    b.HasOne("StoreDB.Models.Cart", "Cart")
                         .WithMany("CartItems")
                         .HasForeignKey("CartId");
 
-                    b.HasOne("Models.Product", "Product")
+                    b.HasOne("StoreDB.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.InventoryItem", b =>
+            modelBuilder.Entity("StoreDB.Models.InventoryItem", b =>
                 {
-                    b.HasOne("Models.Location", "Location")
+                    b.HasOne("StoreDB.Models.Location", "Location")
                         .WithMany("Inventory")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.Product", "Product")
+                    b.HasOne("StoreDB.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.LineItem", b =>
+            modelBuilder.Entity("StoreDB.Models.LineItem", b =>
                 {
-                    b.HasOne("Models.Order", "Order")
+                    b.HasOne("StoreDB.Models.Order", "Order")
                         .WithMany("LineItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.Product", "Product")
+                    b.HasOne("StoreDB.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.Order", b =>
+            modelBuilder.Entity("StoreDB.Models.Order", b =>
                 {
-                    b.HasOne("Models.Location", "Location")
+                    b.HasOne("StoreDB.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Models.User", "User")
+                    b.HasOne("StoreDB.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Models.User", b =>
+            modelBuilder.Entity("StoreDB.Models.User", b =>
                 {
-                    b.HasOne("Models.Location", "Location")
+                    b.HasOne("StoreDB.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
