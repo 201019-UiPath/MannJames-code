@@ -10,8 +10,8 @@ using StoreDB.Models;
 namespace StoreDB.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20201105171548_fix_prod_to_prods")]
-    partial class fix_prod_to_prods
+    [Migration("20201105174952_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
