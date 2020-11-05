@@ -23,7 +23,8 @@ namespace StoreTest
             testLoc.ZipCode = "19293";
             repo.AddLocation(testLoc);
 
-
+            Assert.NotNull(repo.GetAllLocations());
+            repo.DeleteLocation(testLoc);
         }
         [Fact]
         public void AddLocation()
@@ -77,7 +78,8 @@ namespace StoreTest
             testLoc.ZipCode = "19293";
             repo.AddLocation(testLoc);
 
-            Assert.NotNull(repo.GetAllLocations());
+            Assert.NotNull(repo.GetLocationById(testLoc.LocationId));
+            repo.DeleteLocation(testLoc);
         }
     }
 }

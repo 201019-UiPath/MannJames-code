@@ -5,7 +5,8 @@ using System.Linq;
 
 namespace StoreDB
 {
-    public class DBRepo : IProductRepo, ILocationRepo, IInventoryItemRepo
+    public class DBRepo : IProductRepo, ILocationRepo, IInventoryItemRepo, 
+        ICartItemRepo, ICartRepo
     {
         private StoreContext context;
         public DBRepo(StoreContext context)
@@ -146,6 +147,69 @@ namespace StoreDB
         public InventoryItem GetInventoryItemById(int id)
         {
             return context.InventoryItems.Single(x => x.IIId == id);
+        }
+
+        /// <summary>
+        /// Cart item methods
+        /// </summary>
+        /// <param name="cart"></param>
+        public void AddCartItem(CartItem cart)
+        {
+            context.CartItems.Add(cart);
+        }
+
+        public void UpdateCartItem(CartItem cartItem)
+        {
+            context.CartItems.Update(cartItem);
+        }
+
+        public CartItem GetCartItemById(int id)
+        {
+            return context.CartItems.Single(x => x.CIId == id);
+        }
+
+        public CartItem GetCartItemByCartId(int id)
+        {
+            return context.CartItems.Single(x => x.CartIId == id);
+        }
+
+        public List<CartItem> GetAllCartItemsByCartId(int id)
+        {
+            return context.CartItems.Where(x => x.CartIId == id).ToList();
+        }
+
+        public void DeleteCartItem(CartItem cart)
+        {
+            context.CartItems.Remove(cart);
+        }
+
+        /// <summary>
+        /// Cart manipulation
+        /// </summary>
+        /// <param name="cart"></param>
+        public void AddCart(Cart cart)
+        {
+            context.Carts.Add(cart);
+        }
+
+        public void UpdateCart(Cart cart)
+        {
+            context.Carts.Update(cart);
+        }
+
+        public Cart GetCartById(int id)
+        {
+            return context.Carts.Single(x => x.CartId == id);
+        }
+
+        public Cart GetCartByUserId(int id)
+        {
+            return context.Carts.Single(x => x.UserId == id);
+        }
+
+        public void DeleteCart(Cart cart)
+        {
+            context.Carts.Remove(cart);
         }
     }
 }
