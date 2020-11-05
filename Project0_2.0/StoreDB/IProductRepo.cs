@@ -10,7 +10,6 @@ namespace StoreDB.Repos
         Product GetProductById(int productId);
         Product GetProductByName(string productName);
         List<Product> GetAllProducts();
-//        List<Product> GetAllProductsAtLocationId(int locationId);
         void DeleteProduct(Product product);
     }
 }
