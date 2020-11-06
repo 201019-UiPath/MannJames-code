@@ -59,13 +59,13 @@ namespace StoreTest
             using var context = new StoreContext();
             ICartRepo repo = new DBRepo(context);
 
-            Cart testCart = new Cart();
-            testCart.UserId = 1;
-            repo.AddCart(testCart);
+            Cart testCart2 = new Cart();
+            testCart2.UserId = 2;
+            repo.AddCart(testCart2);
 
-            Assert.NotNull(repo.GetCartByUserId(testCart.UserId));
+            Assert.NotNull(repo.GetCartByUserId(testCart2.UserId));
 
-            repo.DeleteCart(testCart);
+            repo.DeleteCart(testCart2);
         }
         #endregion
 
@@ -74,24 +74,29 @@ namespace StoreTest
         public void AddCartItem()
         {
             using var context = new StoreContext();
-            ICartRepo repo = new DBRepo(context);
+            ICartRepo cartrepo = new DBRepo(context);
             ICartItemRepo cirepo = new DBRepo(context);
 
-            Cart testCart = new Cart();
-            testCart.UserId = 1;
+            //add cart
+            Cart testCart3 = new Cart();
+            testCart3.UserId = 2;
+            cartrepo.AddCart(testCart3);
 
-            repo.AddCart(testCart);
+            //addcartitem
+            CartItem cartItem2 = new CartItem();
+            cartItem2.CartIId = testCart3.CartId;
+            cartItem2.ProductId = 1;
+            cartItem2.Quantity = 5;
 
-            CartItem testCartItem = new CartItem();
-            testCartItem.CartIId = 1;
-            testCartItem.ProductId = 1;
-            testCartItem.Quantity = 10;
-            cirepo.AddCartItem(testCartItem);
+            //assert
+            Assert.NotNull(context.CartItems.Single
+            (
+                q => q.CIId == cartItem2.CIId
+            ));
 
-            Assert.NotNull(context.CartItems.Single(q => q.CIId == testCartItem.CIId));
-            cirepo.DeleteCartItem(testCartItem);
-            cirepo.DeleteCartItem(testCartItem);
-            repo.DeleteCart(testCart);
+            //cleanup
+            cirepo.DeleteCartItem(cartItem2);
+            cartrepo.DeleteCart(testCart3);
         }
         [Fact]
         public void UpdateCartItem()

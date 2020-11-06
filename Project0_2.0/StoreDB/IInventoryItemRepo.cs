@@ -5,13 +5,13 @@ namespace StoreDB.Repos
 {
     public interface IInventoryItemRepo
     {
-        void AddInventoryItem(InventoryItem inventoryItem);
-        void UpdateInventoryItem(InventoryItem inventoryItem);
-        InventoryItem GetInventoryItemById(int id);
-        List<InventoryItem> GetAllInventoryItemsById(int id);
+        public void AddInventoryItem(InventoryItem inventoryItem);
+        public void UpdateInventoryItem(InventoryItem inventoryItem);
+        public InventoryItem GetInventoryItemById(int id);
+        public List<InventoryItem> GetAllInventoryItemsById(int id);
 /*        InventoryItem GetInventoryItemByLocationId(int id);*/
-        List<InventoryItem> GetAllInventoryItemsByLocationId(int id);
-        void DeleteInventoryItem(InventoryItem inventoryItem);
-        InventoryItem GetItemByLocationIdProductId(int locationId, int productId);
+        public List<InventoryItem> GetAllInventoryItemsByLocationId(int id);
+        public void DeleteInventoryItem(InventoryItem inventoryItem);
+        public InventoryItem GetItemByLocationIdProductId(int locationId, int productId);
     }
 }

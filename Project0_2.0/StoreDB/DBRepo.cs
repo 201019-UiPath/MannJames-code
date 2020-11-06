@@ -142,10 +142,11 @@ namespace StoreDB
             context.SaveChanges();
         }
 
+        //returns null
         public InventoryItem GetItemByLocationIdProductId(int locationId, int productId)
         {
-            return context.InventoryItems.Single(x=>x.LocationId == locationId
-                && x.ProductId==productId);
+            return context.InventoryItems
+                .Single(x => x.LocationId == locationId && x.ProductId == productId);
         }
 
         public InventoryItem GetInventoryItemById(int id)

@@ -79,14 +79,14 @@ namespace StoreTest
             using var context = new StoreContext();
             IInventoryItemRepo repo = new DBRepo(context);
 
-            InventoryItem testII = new InventoryItem();
+/*            InventoryItem testII = new InventoryItem();
             testII.LocationId = 1;
             testII.ProductId = 2;
             testII.Quantity = 10;
-            repo.AddInventoryItem(testII);
+            repo.AddInventoryItem(testII);*/
 
-            repo.GetItemByLocationIdProductId(testII.ProductId, testII.LocationId);
-            repo.DeleteInventoryItem(testII);
+            repo.GetItemByLocationIdProductId(1,1);
+            //repo.DeleteInventoryItem(testII);
         }
     }
 }
