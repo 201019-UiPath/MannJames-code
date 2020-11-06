@@ -21,7 +21,7 @@ namespace StoreTest
             testProd2.ProductName = "testProd2";
 
             repo.AddProduct(testProd2);
-            Assert.NotNull(context.Products.Single(q => q.ProductName == testProd2.ProductName));
+            Assert.NotNull(context.Products.Single(q => q.ProductId == testProd2.ProductId));
 
             repo.DeleteProduct(testProd2);
         }

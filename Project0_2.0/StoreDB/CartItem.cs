@@ -6,9 +6,9 @@ namespace StoreDB.Models
     public class CartItem
     {
         [Key]
-        public int CIId { get; set; }
+        public int CartInventoryId { get; set; }
         [ForeignKey("FK_CICart")]
-        public int CartIId { get; set; }
+        public int CartId { get; set; }
         public Cart Cart { get; set; }
         [ForeignKey("FK_CartProd")]
         public int ProductId { get; set; }

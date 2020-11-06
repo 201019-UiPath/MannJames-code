@@ -172,17 +172,17 @@ namespace StoreDB
 
         public CartItem GetCartItemById(int id)
         {
-            return context.CartItems.Single(x => x.CIId == id);
+            return context.CartItems.Single(x => x.CartInventoryId == id);
         }
 
         public CartItem GetCartItemByCartId(int id)
         {
-            return context.CartItems.Single(x => x.CartIId == id);
+            return context.CartItems.Single(x => x.CartInventoryId == id);
         }
 
         public List<CartItem> GetAllCartItemsByCartId(int id)
         {
-            return context.CartItems.Where(x => x.CartIId == id).ToList();
+            return context.CartItems.Where(x => x.CartInventoryId == id).ToList();
         }
 
         public void DeleteCartItem(CartItem cart)
