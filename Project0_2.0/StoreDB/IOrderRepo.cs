@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace StoreDB
+namespace StoreDB.Repos
 {
     public interface IOrderRepo
     {
