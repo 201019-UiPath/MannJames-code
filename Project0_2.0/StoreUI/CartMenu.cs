@@ -136,10 +136,10 @@ namespace StoreUI.Menus.Customer
                 lineItem.Quantity = item.Quantity;
                 
                 //salestax
-                float salestax = 0.07F;
+                float salestax = 1.07F;
 
                 //had to convert numbers to float...keep an eye on this
-                total += (product.Price * item.Quantity * salestax);
+                total += product.Price * item.Quantity * salestax;
 
                 lineItemService.AddLineItem(lineItem);
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using StoreDB;
 using StoreDB.Models;
 using StoreLib;
 using StoreDB.Repos;
@@ -87,6 +86,75 @@ namespace StoreUI.Menus.Customer
                     ValidationService.InvalidInput();
                     break;
             }
+        }
+
+        public void RemoveItemFromCart()
+        {
+            string input;
+
+            do
+            {
+                Console.WriteLine("\nSelect item to remove: ");
+
+                Cart cart = cartService.GetCartByUserId(loggedInUser.UserId);
+                List<CartItem> items = cartItemService.GetAllCartItemsByCartId(cart.CartId);
+                int i = 0;
+                foreach (CartItem item in items)
+                {
+                    i++;
+                    Product product = productService.GetProductByProductId(item.ProductId);
+                    Console.WriteLine(
+                        $" [{i}] {product.ProductName} | {product.Price} | {item.Quantity} "
+                    );
+                }
+
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        break;
+                    case "2":
+                        break;
+                    default:
+                        ValidationService.InvalidInput();
+                        break;
+                }
+
+            } while (!input.Equals("2"));
+
+        }
+
+        public void ChangeCartItemQuantity()
+        {
+            string input;
+
+            do
+            {
+                Console.WriteLine("\nSelect item to adjust: ");
+
+                Cart cart = cartService.GetCartByUserId(loggedInUser.UserId);
+                List<CartItem> items = cartItemService.GetAllCartItemsByCartId(cart.CartId);
+                int i = 0;
+                foreach (CartItem item in items)
+                {
+                    i++;
+                    Product product = productService.GetProductByProductId(item.ProductId);
+                    Console.WriteLine($" [{i}] {product.ProductName} | {product.Price} | {item.Quantity} ");
+                }
+
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        break;
+                    case "2":
+                        break;
+                    default:
+                        ValidationService.InvalidInput();
+                        break;
+                }
+
+            } while (!input.Equals("2"));
         }
     }
 }
