@@ -17,7 +17,7 @@ namespace StoreTest
             IProductRepo repo = new DBRepo(context);
 
             Product testProd2 = new Product();
-            testProd2.Price = 1.00M;
+            testProd2.Price = 1.00F;
             testProd2.ProductName = "testProd2";
 
             repo.AddProduct(testProd2);
@@ -33,7 +33,7 @@ namespace StoreTest
             IProductRepo repo = new DBRepo(context);
 
             Product testProd = new Product();
-            testProd.Price = 1.00M;
+            testProd.Price = 1.00F;
             testProd.ProductName = "testProd";
             repo.AddProduct(testProd);
 
@@ -50,7 +50,7 @@ namespace StoreTest
             IProductRepo repo = new DBRepo(context);
 
             Product testProd = new Product();
-            testProd.Price = 1.00M;
+            testProd.Price = 1.00F;
             testProd.ProductName = "testProd";
             repo.AddProduct(testProd);
 
@@ -64,7 +64,7 @@ namespace StoreTest
             IProductRepo repo = new DBRepo(context);
 
             Product testProd3 = new Product();
-            testProd3.Price = 3.00M;
+            testProd3.Price = 3.00F;
             testProd3.ProductName = "3testProd";
             repo.AddProduct(testProd3);
 
@@ -78,7 +78,7 @@ namespace StoreTest
             IProductRepo repo = new DBRepo(context);
 
             Product testProd = new Product();
-            testProd.Price = 1.00M;
+            testProd.Price = 1.00F;
             testProd.ProductName = "testProd";
             repo.AddProduct(testProd);
 
