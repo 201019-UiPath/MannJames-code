@@ -4,7 +4,6 @@ using StoreDB.Models;
 using StoreLib;
 using StoreDB.Repos;
 using System.Collections.Generic;
-using StoreTest;
 
 namespace StoreUI.Menus.Customer
 {
@@ -135,9 +134,12 @@ namespace StoreUI.Menus.Customer
                 lineItem.ProductId = item.ProductId;
                 lineItem.Price = product.Price;
                 lineItem.Quantity = item.Quantity;
+                
+                //salestax
+                float salestax = 0.07F;
 
                 //had to convert numbers to float...keep an eye on this
-                total += (product.Price * item.Quantity);
+                total += (product.Price * item.Quantity * salestax);
 
                 lineItemService.AddLineItem(lineItem);
 

@@ -2,7 +2,7 @@
 using StoreDB.Repos;
 using System.Collections.Generic;
 
-namespace StoreTest
+namespace StoreLib
 {
     public class LocationService
     {
