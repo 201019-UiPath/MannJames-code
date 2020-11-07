@@ -97,9 +97,9 @@ namespace StoreUI.Menus.Customer
                 List<LineItem> items = lineItemService.GetAllLineItemsByOrderId(order.OrderId);
                 foreach (LineItem item in items)
                 {
-                    Product product = productService.GetProductByProductId(item.ProductId);
-                    Console.WriteLine($"\tProduct: {product.ProductName} | Price: {item.Price} | " +
-                        $"Amount: {item.Quantity}");
+                    Product product = productService?.GetProductByProductId(item.ProductId);
+                    Console.WriteLine($"\tProduct: {product?.ProductName} | Price: {product?.Price} | " +
+                        $"Amount: {item?.Quantity}");
                 }
                 Console.WriteLine("\n");
             }
@@ -120,9 +120,11 @@ namespace StoreUI.Menus.Customer
                 List<LineItem> items = lineItemService.GetAllLineItemsByOrderId(order.OrderId);
                 foreach (LineItem item in items)
                 {
-                    Product product = productService.GetProductByProductId(item.ProductId);
-                    Console.WriteLine($"\tProduct: {product.ProductName} | Price: {item.Price} | " +
-                        $"Amount: {item.Quantity}");
+                    //issue with line item retrieval?
+                    //issue with order retrieval?
+                    Product product = productService?.GetProductByProductId(item.ProductId);
+                    Console.WriteLine($"\tProduct: {product?.ProductName} | Price: {item?.Price} | " +
+                        $"Amount: {item?.Quantity}");
                 }
                 Console.WriteLine("\n");
             }
@@ -143,9 +145,9 @@ namespace StoreUI.Menus.Customer
                 List<LineItem> items = lineItemService.GetAllLineItemsByOrderId(order.OrderId);
                 foreach (LineItem item in items)
                 {
-                    Product product = productService.GetProductByProductId(item.ProductId);
-                    Console.WriteLine($"\tProduct: {product.ProductName} | Price: {item.Price} | " +
-                        $"Amount: {item.Quantity}");
+                    Product product = productService?.GetProductByProductId(item.ProductId);
+                    Console.WriteLine($"\tProduct: {product?.ProductName} | Price: {item?.Price} | " +
+                        $"Amount: {item?.Quantity}");
                 }
                 Console.WriteLine("\n");
             }
@@ -166,9 +168,9 @@ namespace StoreUI.Menus.Customer
                 List<LineItem> items = lineItemService.GetAllLineItemsByOrderId(order.OrderId);
                 foreach (LineItem item in items)
                 {
-                    Product product = productService.GetProductByProductId(item.ProductId);
-                    Console.WriteLine($"\tProduct: {product.ProductName} | Price: {item.Price} | " +
-                        $"Amount: {item.Quantity}");
+                    Product product = productService?.GetProductByProductId(item.ProductId);
+                    Console.WriteLine($"\tProduct: {product?.ProductName} | Price: {item?.Price} | " +
+                        $"Amount: {item?.Quantity}");
                 }
                 Console.WriteLine("\n");
             }

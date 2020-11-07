@@ -146,7 +146,7 @@ namespace StoreDB
         public InventoryItem GetItemByLocationIdProductId(int locationId, int productId)
         {
             return context.InventoryItems
-                .Single(x => x.LocationId == locationId && x.ProductId == productId);
+                .FirstOrDefault(x => x.LocationId == locationId && x.ProductId == productId);
         }
 
         public InventoryItem GetInventoryItemById(int id)
@@ -219,6 +219,7 @@ namespace StoreDB
 
         public void DeleteCart(Cart cart)
         {
+            //somehow null
             context.Carts.Remove(cart);
             context.SaveChanges();
         }
@@ -281,6 +282,7 @@ namespace StoreDB
             return context.LineItems.Single(q => q.OrderId == id);
         }
 
+        //problem here
         public List<LineItem> GetAllLineItemsByOrderId(int id)
         {
             return context.LineItems.Where(q => q.OrderId == id).ToList();

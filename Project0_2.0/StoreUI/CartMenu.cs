@@ -4,6 +4,8 @@ using StoreDB.Models;
 using StoreLib;
 using StoreDB.Repos;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace StoreUI.Menus.Customer
 {
@@ -60,25 +62,40 @@ namespace StoreUI.Menus.Customer
                 new DBRepo(storeContext), new DBRepo(storeContext), new DBRepo(storeContext),
                 new DBRepo(storeContext)
             );
-
         }
 
         public void Start()
         {
+            StoreContext storeContext = new StoreContext();
+            CustomerMenu customerMenu = new CustomerMenu(loggedInUser, storeContext);
+
             do
             {
                 Cart cart = cartService.GetCartByUserId(loggedInUser.UserId);
-                List<CartItem> items = cartItemService.GetAllCartItemsByCartId(cart.CartId);
+                if (cart == null) 
+                {
 
-                Console.WriteLine("\nItems currently in your cart: ");
+                    /* Console.WriteLine("Cart is empty!");
+                      StoreContext context = new StoreContext();
+                      CustomerMenu customerM = new CustomerMenu(loggedInUser, context);
+                      customerM.Start();*/
+                    Cart cartToAdd = new Cart();
+                    cartToAdd.UserId = loggedInUser.UserId;
+
+                    cartService.AddCart(cartToAdd);
+                    Console.WriteLine("Cart is empty! We will make one for you!");
+                    StoreContext context = new StoreContext();
+                    CustomerMenu customerM = new CustomerMenu(loggedInUser, context);
+                    customerM.Start();
+                }
+
+                List<CartItem> items = cartItemService.GetAllCartItemsByCartId(cart.CartId);
                 foreach (CartItem item in items)
                 {
                     Product product = productService.GetProductByProductId(item.ProductId);
                     Console.WriteLine($" - {product.ProductName} | {product.Price} | {item.Quantity}");
                 }
 
-
-                //Cart menu options
                 Console.WriteLine("\nWhat would you like to do?");
                 Console.WriteLine("[1] Add items");
                 Console.WriteLine("[2] Edit cart");
@@ -103,9 +120,7 @@ namespace StoreUI.Menus.Customer
                         ValidationService.InvalidInput();
                         break;
                 }
-
             } while (!userInput.Equals("3"));
-
         }
 
         public void CheckOut()

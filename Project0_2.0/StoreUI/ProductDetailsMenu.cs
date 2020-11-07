@@ -57,7 +57,7 @@ namespace StoreUI.Menus.Customer
                 {
                     InventoryItem selectedItem = inventoryService
                         .GetItemByLocationIdProductId(loggedInUser.LocationId, product.ProductId);
-
+                //fix here
                     int inventoryQuantity = selectedItem.Quantity;
 
                     Console.WriteLine("\nWhat would you like to do? ");
