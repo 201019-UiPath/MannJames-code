@@ -59,13 +59,13 @@ namespace StoreTest
             using var context = new StoreContext();
             ICartRepo repo = new DBRepo(context);
 
-            Cart testCart2 = new Cart();
-            testCart2.UserId = 2;
-            repo.AddCart(testCart2);
+            Cart testCart12 = new Cart();
+            testCart12.UserId = 2;
+            repo.AddCart(testCart12);
 
-            Assert.NotNull(repo.GetCartByUserId(testCart2.UserId));
+            Assert.NotNull(repo.GetCartByUserId(testCart12.UserId));
 
-            repo.DeleteCart(testCart2);
+            repo.DeleteCart(testCart12);
         }
         #endregion
 

@@ -214,7 +214,7 @@ namespace StoreDB
 
         public Cart GetCartByUserId(int id)
         {
-            return context.Carts.Single(x => x.UserId == id);
+            return context.Carts.FirstOrDefault(x => x.UserId == id);
         }
 
         public void DeleteCart(Cart cart)
