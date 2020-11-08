@@ -175,16 +175,16 @@ namespace StoreDB
             return context.CartItems.SingleOrDefault(x => x.CartItemId == id);
         }
 
-        //trying this out to fix issues
+        //TODO change name for method
         public CartItem GetCartItemByCartId(int id)
         {
-            return context.CartItems.SingleOrDefault(x => x.CartItemId == id);
+            return context.CartItems.SingleOrDefault(x => x.CartId == id);
         }
-        //end of fix
 
+        //TODO test this
         public List<CartItem> GetAllCartItemsByCartId(int id)
         {
-            return context.CartItems.Where(x => x.CartItemId == id).ToList();
+            return context.CartItems.Where(x => x.CartId == id).ToList();
         }
 
         public void DeleteCartItem(CartItem cart)
