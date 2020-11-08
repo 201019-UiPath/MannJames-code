@@ -84,7 +84,7 @@ namespace StoreUI.Menus.Customer
 
                             CartItem item = new CartItem();
                             Cart userCart = cartService.GetCartByUserId(loggedInUser.UserId);
-                            item.CartId = userCart.UserId;
+                            item.CartId = userCart.CartId;
                             item.ProductId = product.ProductId;
                             item.Quantity = quantity;
                             cartItemService.AddCartItem(item);
@@ -98,7 +98,7 @@ namespace StoreUI.Menus.Customer
                             ValidationService.InvalidInput();
                             break;
                     }
-                } while (!userInput.Equals("2"));
+                } while (!userInput.Equals("q"));
             }
      }
 }
