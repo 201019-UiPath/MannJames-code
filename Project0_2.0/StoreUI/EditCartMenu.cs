@@ -47,7 +47,6 @@ namespace StoreUI.Menus.Customer
         }
         public void Start()
         {
-            //Get current user's cart and items
             Cart cart = cartService.GetCartByUserId(loggedInUser.UserId);
             List<CartItem> items = cartItemService.GetAllCartItemsByCartId(cart.CartId);
 

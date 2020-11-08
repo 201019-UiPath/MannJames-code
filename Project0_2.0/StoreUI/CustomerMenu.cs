@@ -14,7 +14,6 @@ namespace StoreUI.Menus.Customer
         private ChangeLocationMenu changeLocationMenu;
         private CartMenu cartMenu;
 
-
         public CustomerMenu(User user, StoreContext context)
         {
             this.loggedInUser = user;

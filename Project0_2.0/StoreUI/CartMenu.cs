@@ -97,7 +97,7 @@ namespace StoreUI.Menus.Customer
                 }
 
                 Console.WriteLine("\nWhat would you like to do?");
-                Console.WriteLine("[1] Add items");
+                Console.WriteLine("[1] Checkout");
                 Console.WriteLine("[2] Edit cart");
                 Console.WriteLine("[3] Back");
 
