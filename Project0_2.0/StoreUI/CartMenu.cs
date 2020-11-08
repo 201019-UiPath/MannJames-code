@@ -32,8 +32,6 @@ namespace StoreUI.Menus.Customer
         private ProductService productService;
         private UserService userService;
 
-        private EditCartMenu editCartMenu;
-
         public CartMenu(User user, StoreContext storeContext, ICartRepo cartRepo, ICartItemRepo cartItemRepo,
             IInventoryItemRepo inventoryItemRepo, ILineItemRepo lineItemRepo, ILocationRepo locationRepo,
             IOrderRepo orderRepo, IProductRepo productRepo, IUserRepo userRepo)
@@ -56,12 +54,6 @@ namespace StoreUI.Menus.Customer
             this.orderService = new OrderService(orderRepo);
             this.productService = new ProductService(productRepo);
             this.userService = new UserService(userRepo);
-
-            this.editCartMenu = new EditCartMenu(
-                loggedInUser, storeContext, new DBRepo(storeContext), new DBRepo(storeContext),
-                new DBRepo(storeContext), new DBRepo(storeContext), new DBRepo(storeContext),
-                new DBRepo(storeContext)
-            );
         }
 
         public void Start()
