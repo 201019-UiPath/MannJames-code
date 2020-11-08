@@ -10,7 +10,7 @@ namespace StoreUI.Menus.Manager
     public class ManagerMenu : IMenu
     {
         private string userInput;
-        private User signedInUser;
+        private User loggedInUser;
         private IUserRepo userRepo;
         private UserService userService;
         private ILocationRepo locationRepo;
@@ -19,21 +19,22 @@ namespace StoreUI.Menus.Manager
 
         public ManagerMenu(User user, StoreContext context, IUserRepo userRepo, ILocationRepo locationRepo)
         {
-            this.signedInUser = user;
+            this.loggedInUser = user;
             this.userRepo = userRepo;
             this.locationRepo = locationRepo;
             this.userService = new UserService(userRepo);
             this.locationService = new LocationService(locationRepo);
 
             this.editInvMenu = new EditInventoryMenu
-                (signedInUser, context, new DBRepo(context), new DBRepo(context), new DBRepo(context));
+                (loggedInUser, context, new DBRepo(context), new DBRepo(context), new DBRepo(context));
         }
 
         public void Start()
         {
             do
             {
-                System.Console.WriteLine("\nWelcome to CF Books! What would you like to do today?");
+                Console.WriteLine($"\nWelcome {loggedInUser.Name}!"); 
+                Console.WriteLine("What would you like to do today?");
 
                 //Manager Menu Options
                 System.Console.WriteLine("[1] Manage Inventory");
@@ -51,7 +52,7 @@ namespace StoreUI.Menus.Manager
                         userService.AddUser(newUser);
                         break;
                     case "3":
-                        System.Console.WriteLine("Goodbye!");
+                        System.Console.WriteLine("Adieu!");
                         Environment.Exit(0);
                         break;
                     default:

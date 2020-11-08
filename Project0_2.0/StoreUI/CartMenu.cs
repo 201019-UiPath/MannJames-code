@@ -79,11 +79,11 @@ namespace StoreUI.Menus.Customer
                       StoreContext context = new StoreContext();
                       CustomerMenu customerM = new CustomerMenu(loggedInUser, context);
                       customerM.Start();*/
-                    Cart cartToAdd = new Cart();
-                    cartToAdd.UserId = loggedInUser.UserId;
+                    //Cart cartToAdd = new Cart();
+                    //cartToAdd.UserId = loggedInUser.UserId;
 
-                    cartService.AddCart(cartToAdd);
-                    Console.WriteLine("Cart is empty! We will make one for you!");
+                    //cartService.AddCart(cartToAdd);
+                    Console.WriteLine("Cart is empty!");
                     StoreContext context = new StoreContext();
                     CustomerMenu customerM = new CustomerMenu(loggedInUser, context);
                     customerM.Start();
@@ -129,10 +129,11 @@ namespace StoreUI.Menus.Customer
             List<CartItem> items = cartItemService.GetAllCartItemsByCartId(cart.CartId);
 
             Order order = new Order();
-            double total = 0;
+            float total = 0.00f;
             order.UserId = loggedInUser.UserId;
             order.LocationId = loggedInUser.LocationId;
-            DateTime orderDate = order.OrderDate = DateTime.Now;
+            DateTime orderDate = DateTime.Now;
+            order.OrderDate = orderDate;
             orderService.AddOrder(order);
 
             Order createdOrder = orderService.GetOrderByDate(orderDate);
@@ -157,7 +158,6 @@ namespace StoreUI.Menus.Customer
                 total += product.Price * item.Quantity * salestax;
 
                 lineItemService.AddLineItem(lineItem);
-
                 cartItemService.DeleteCartItem(item);
 
                 InventoryItem itemInInv = inventoryService.GetItemByLocationIdProductId

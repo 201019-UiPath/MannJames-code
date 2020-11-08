@@ -79,8 +79,8 @@ namespace StoreUI.Menus.Customer
                             {
                                 Console.WriteLine("How many would you like? ");
                                 quantity = Int32.Parse(Console.ReadLine());
-                            } while (ValidationService.
-                                InvalidQuantity(inventoryQuantity, quantity) == false);
+                            } while (ValidationService.InvalidQuantity(inventoryQuantity, quantity) 
+                            == false);
 
                             CartItem item = new CartItem();
                             Cart userCart = cartService.GetCartByUserId(loggedInUser.UserId);
@@ -98,7 +98,7 @@ namespace StoreUI.Menus.Customer
                             ValidationService.InvalidInput();
                             break;
                     }
-                } while (!userInput.Equals("q"));
+                } while (!userInput.Equals("2"));
             }
      }
 }

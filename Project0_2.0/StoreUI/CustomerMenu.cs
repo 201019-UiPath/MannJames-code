@@ -30,7 +30,7 @@ namespace StoreUI.Menus.Customer
         {
             do
             {
-                Console.WriteLine("\nWelcome to Mann's Videogame Shoppe!");
+                Console.WriteLine($"\nWelcome to Mann's Videogame Shoppe {loggedInUser.Name}!");
                 Console.WriteLine("\nWhat would you like to do today?");
 
                 //Customer Menu Options

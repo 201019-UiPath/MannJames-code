@@ -39,12 +39,12 @@ namespace StoreDB
 
         public Product GetProductById(int productId)
         {
-            return context.Products.Single(x => x.ProductId == productId);
+            return context.Products.SingleOrDefault(x => x.ProductId == productId);
         }
 
         public Product GetProductByName(string productName)
         {
-            return context.Products.Single(x => x.ProductName == productName);
+            return context.Products.SingleOrDefault(x => x.ProductName == productName);
         }
 
         public void UpdateProduct(Product product)
@@ -96,7 +96,7 @@ namespace StoreDB
 
         public Location GetLocationById(int id)
         {
-            return context.Locations.Single(x => x.LocationId == id);
+            return context.Locations.SingleOrDefault(x => x.LocationId == id);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace StoreDB
 
 /*        public InventoryItem GetInventoryItemById(int id)
         {
-            return context.InventoryItems.Single(x => x.IIId == id);
+            return context.InventoryItems.SingleOrDefault(x => x.IIId == id);
         }*/
 
         public List<InventoryItem> GetAllInventoryItemsById(int id)
@@ -128,7 +128,7 @@ namespace StoreDB
 
         public InventoryItem GetInventoryItemByLocationId(int id)
         {
-            return context.InventoryItems.Single(x => x.LocationId == id);
+            return context.InventoryItems.SingleOrDefault(x => x.LocationId == id);
         }
 
         public List<InventoryItem> GetAllInventoryItemsByLocationId(int id)
@@ -151,7 +151,7 @@ namespace StoreDB
 
         public InventoryItem GetInventoryItemById(int id)
         {
-            return context.InventoryItems.Single(x => x.IIId == id);
+            return context.InventoryItems.SingleOrDefault(x => x.IIId == id);
         }
 
         /// <summary>
@@ -172,13 +172,13 @@ namespace StoreDB
 
         public CartItem GetCartItemById(int id)
         {
-            return context.CartItems.Single(x => x.CartItemId == id);
+            return context.CartItems.SingleOrDefault(x => x.CartItemId == id);
         }
 
         //trying this out to fix issues
         public CartItem GetCartItemByCartId(int id)
         {
-            return context.CartItems.FirstOrDefault(x => x.CartItemId == id);
+            return context.CartItems.SingleOrDefault(x => x.CartItemId == id);
         }
         //end of fix
 
@@ -211,12 +211,12 @@ namespace StoreDB
 
         public Cart GetCartById(int id)
         {
-            return context.Carts.Single(x => x.CartId == id);
+            return context.Carts.SingleOrDefault(x => x.CartId == id);
         }
 
         public Cart GetCartByUserId(int id)
         {
-            return context.Carts.FirstOrDefault(x => x.UserId == id);
+            return context.Carts.SingleOrDefault(x => x.UserId == id);
         }
 
         public void DeleteCart(Cart cart)
@@ -243,12 +243,12 @@ namespace StoreDB
 
         public User GetUserById(int id)
         {
-            return context.Users.Single(q => q.UserId == id);
+            return context.Users.SingleOrDefault(q => q.UserId == id);
         }
 
         public User GetUserByUsername(string username)
         {
-            return context.Users.Single(q => q.Username==username);
+            return context.Users.SingleOrDefault(q => q.Username==username);
         }
 
         public List<User> GetAllUsers()
@@ -281,7 +281,7 @@ namespace StoreDB
 
         public LineItem GetLineItemByOrderId(int id)
         {
-            return context.LineItems.Single(q => q.OrderId == id);
+            return context.LineItems.SingleOrDefault(q => q.OrderId == id);
         }
 
         //problem here
@@ -313,17 +313,17 @@ namespace StoreDB
 
         public Order GetOrderById(int id)
         {
-            return context.Orders.Single(q => q.OrderId ==id);
+            return context.Orders.SingleOrDefault(q => q.OrderId ==id);
         }
 
         public Order GetOrderByUserId(int id)
         {
-            return context.Orders.Single(q => q.UserId == id);
+            return context.Orders.SingleOrDefault(q => q.UserId == id);
         }
 
         public Order GetOrderByLocationId(int id)
         {
-            return context.Orders.Single(q => q.LocationId == id);
+            return context.Orders.SingleOrDefault(q => q.LocationId == id);
         }
 
         public List<Order> GetAllOrdersByLocationId(int id)
@@ -368,7 +368,7 @@ namespace StoreDB
 
         public Order GetOrderByDate(DateTime dateTime)
         {
-            return context.Orders.Single(q => q.OrderDate == dateTime);
+            return context.Orders.SingleOrDefault(q => q.OrderDate == dateTime);
         }
     }
 }
