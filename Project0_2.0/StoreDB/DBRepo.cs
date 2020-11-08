@@ -248,7 +248,7 @@ namespace StoreDB
 
         public User GetUserByUsername(string username)
         {
-            return context.Users.SingleOrDefault(q => q.Username==username);
+            return context.Users.FirstOrDefault(q => q.Username==username);
         }
 
         public List<User> GetAllUsers()

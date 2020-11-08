@@ -87,7 +87,11 @@ namespace StoreUI.Menus.Customer
                             item.CartId = userCart.CartId;
                             item.ProductId = product.ProductId;
                             item.Quantity = quantity;
+                        if (item != null)
+                        {
                             cartItemService.AddCartItem(item);
+                        }
+                        else { Console.WriteLine("error. try adding again"); break; }
                             Console.WriteLine($"{product.ProductName} added to cart!");
                             break;
 
