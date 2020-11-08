@@ -1,11 +1,8 @@
 ﻿using System;
-using StoreDB;
 using StoreDB.Models;
 using StoreLib;
 using StoreDB.Repos;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace StoreUI.Menus.Customer
 {
@@ -66,15 +63,6 @@ namespace StoreUI.Menus.Customer
                 Cart cart = cartService.GetCartByUserId(loggedInUser.UserId);
                 if (cart == null) 
                 {
-
-                    /* Console.WriteLine("Cart is empty!");
-                      StoreContext context = new StoreContext();
-                      CustomerMenu customerM = new CustomerMenu(loggedInUser, context);
-                      customerM.Start();*/
-                    //Cart cartToAdd = new Cart();
-                    //cartToAdd.UserId = loggedInUser.UserId;
-
-                    //cartService.AddCart(cartToAdd);
                     Console.WriteLine("Cart is empty!");
                     StoreContext context = new StoreContext();
                     CustomerMenu customerM = new CustomerMenu(loggedInUser, context);
@@ -154,11 +142,12 @@ namespace StoreUI.Menus.Customer
                 itemInInv.Quantity -= item.Quantity;
                 inventoryService.UpdateInventoryItem(itemInInv);
 
+
                 Console.WriteLine($"Item: {product.ProductName} {product.Price} {lineItem.Quantity}");
             }
 
-            //Update order's total price
-            order.TotalPrice = total;
+            decimal rounded_total = (decimal)Math.Round(total, 2);
+            order.TotalPrice = (double)rounded_total;
             orderService.UpdateOrder(createdOrder);
 
             Console.WriteLine($"Your total: {order.TotalPrice}");
