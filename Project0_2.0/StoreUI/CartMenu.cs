@@ -176,7 +176,7 @@ namespace StoreUI.Menus.Customer
 
             Console.WriteLine($"Your total: {order.TotalPrice}");
             Console.WriteLine("Thank you for visiting Mann's Videogame Shoppe!");
-
+            cartRepo.DeleteCart(cart);
         }
     }
 }

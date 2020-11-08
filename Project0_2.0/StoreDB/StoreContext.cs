@@ -37,6 +37,9 @@ namespace StoreDB.Models
             modelBuilder.Entity<User>()
             .Property(u => u.Type)
             .HasConversion(userConverter);
+
+            modelBuilder.Entity<CartItem>()
+                .HasKey(c => new { c.CartId, c.CartItemId });
         }
 
     }

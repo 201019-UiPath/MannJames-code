@@ -92,7 +92,7 @@ namespace StoreTest
             //assert
             Assert.NotNull(context.CartItems.Single
             (
-                q => q.CartInventoryId == cartItem2.CartInventoryId
+                q => q.CartItemId == cartItem2.CartItemId
             ));
 
             //cleanup
@@ -142,7 +142,7 @@ namespace StoreTest
             testCartItem.CartId = testCart.CartId;
             cirepo.AddCartItem(testCartItem);
 
-            Assert.NotNull(cirepo.GetCartItemById(testCartItem.CartInventoryId));
+            Assert.NotNull(cirepo.GetCartItemById(testCartItem.CartItemId));
 
             cirepo.DeleteCartItem(testCartItem);
             repo.DeleteCart(testCart);
@@ -160,13 +160,13 @@ namespace StoreTest
             repo.AddCart(testCart);
 
             CartItem testCartItem = new CartItem();
-            testCartItem.CartInventoryId = 1;
+            testCartItem.CartItemId = 1;
             testCartItem.ProductId = 1;
             testCartItem.Quantity = 10;
             testCartItem.CartId = testCart.CartId;
             cirepo.AddCartItem(testCartItem);
 
-            Assert.NotNull(cirepo.GetAllCartItemsByCartId(testCartItem.CartInventoryId));
+            Assert.NotNull(cirepo.GetAllCartItemsByCartId(testCartItem.CartItemId));
 
             cirepo.DeleteCartItem(testCartItem);
             repo.DeleteCart(testCart);
@@ -189,7 +189,7 @@ namespace StoreTest
             testCartItem.Quantity = 10;
             cirepo.AddCartItem(testCartItem);
 
-            List<CartItem> items = cirepo.GetAllCartItemsByCartId(testCartItem.CartInventoryId);
+            List<CartItem> items = cirepo.GetAllCartItemsByCartId(testCartItem.CartItemId);
             Assert.NotNull(items);
 
             cirepo.DeleteCartItem(testCartItem);
