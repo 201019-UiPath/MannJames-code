@@ -1,0 +1,11 @@
+<description>
+	<ul>
+		The project has highly improved code versus the previous iteration. 
+		It is intended to go through three options in the main menu: inventory, customer, and employee.
+		The first consists of location list, leading to location inventory based on inputted location ID. 
+		The second has the customer portal which leads to viewing order history and making new orders or registering a new customer.
+		The last has the employee-applicable information and leads into the manager portal. 
+		I tried to make it comprehensive and straighforward with plenty of unit testing (27 as of this document's writing), all of them passed.
+		Cheers.
+	</ul>
+</description>
