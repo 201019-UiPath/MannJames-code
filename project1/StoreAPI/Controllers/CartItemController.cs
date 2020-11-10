@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using StoreDB.Models;
 using StoreLib;
@@ -79,7 +76,7 @@ namespace StoreAPI.Controllers
                 }
            */
 
-        [HttpPost("get")]
+        [HttpPost("get/{cartId}")]
         [Produces("application/json")]
         public ActionResult GetAllCartItemsByCartId(int cartId)
         {
