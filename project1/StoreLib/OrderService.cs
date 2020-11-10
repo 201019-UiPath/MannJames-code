@@ -5,7 +5,7 @@ using System;
 
 namespace StoreLib
 {
-    public class OrderService
+    public class OrderService:IOrderService
     {
         private IOrderRepo repo;
         public OrderService(IOrderRepo repo)

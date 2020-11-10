@@ -1,10 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using StoreDB.Models;
 
 namespace StoreLib
 {
-    interface IUserService
+    public interface IUserService
     {
+        public void AddUser(User user);
+        public void UpdateUser(User user);
+        public User GetUserById(int id);
+        public User GetUserByUsername(string username);
+        public List<User> GetAllUsers();
+        public void DeleteUser(User user);
     }
 }
