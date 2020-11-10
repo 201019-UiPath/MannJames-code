@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StoreLib
 {
-    public class UserService
+    public class UserService:IUserService
     {
         private IUserRepo repo;
         public UserService(IUserRepo repo)

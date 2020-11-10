@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using StoreDB;
 using StoreDB.Models;
 using StoreDB.Repos;
@@ -39,26 +32,23 @@ namespace StoreAPI
             services.AddScoped<ICartItemService, CartItemService>();
             services.AddScoped<ICartItemRepo, DBRepo>();
 
-            /*
-                        services.AddScoped<ILocationService, LocationService>();
-                        services.AddScoped<ILocationRepo, DBRepo>();
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ILocationRepo, DBRepo>();
 
-                        services.AddScoped<IUserService, UserService>();
-                        services.AddScoped<IUserRepo, DBRepo>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepo, DBRepo>();
 
+            services.AddScoped<ICartService, CartService>();
+            services.AddScoped<ICartRepo, DBRepo>();
 
+            services.AddScoped<ILineItemService, LineItemService>();
+            services.AddScoped<ILineItemRepo, DBRepo>();
 
-                        services.AddScoped<ICartService, CartService>();
-                        services.AddScoped<ICartRepo, DBRepo>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepo, DBRepo>();
 
-                        services.AddScoped<ILineItemService, LineItemService>();
-                        services.AddScoped<ILineItemRepo, DBRepo>();
-
-                        services.AddScoped<IOrderService, OrderService>();
-                        services.AddScoped<IOrderRepo, DBRepo>();
-
-                        services.AddScoped<IInventoryService, InventoryService>();
-                        services.AddScoped<IInventoryItemRepo, DBRepo>();*/
+            services.AddScoped<IInventoryService, InventoryService>();
+            services.AddScoped<IInventoryItemRepo, DBRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

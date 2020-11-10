@@ -86,7 +86,6 @@ namespace StoreAPI.Controllers
         {
             try
             {
-                //TODO will need to adjust this to search w/o case sensitivity
                 return Ok(productService.GetProductByName(productName));
             }
             catch (Exception)
@@ -94,10 +93,5 @@ namespace StoreAPI.Controllers
                 return NotFound();
             }
         }
-
-
-
-        //TODO this should be removed as it is not used List<Product> GetAllProductsAtLocationId(int id);
-        // public IActionResult GetProductById(int id) { }
     }
 }
