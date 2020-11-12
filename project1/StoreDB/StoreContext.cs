@@ -16,6 +16,11 @@ namespace StoreDB.Models
         public DbSet<LineItem> LineItems { get; set; }
         public DbSet<Order> Orders { get; set; }
 
+        public StoreContext(DbContextOptions<DbContext> options)
+            : base(options)
+        {
+
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!(optionsBuilder.IsConfigured))

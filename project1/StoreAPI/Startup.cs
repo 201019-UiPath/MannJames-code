@@ -8,7 +8,6 @@ using StoreDB;
 using StoreDB.Models;
 using StoreDB.Repos;
 using StoreLib;
-using System.Runtime.CompilerServices;
 
 namespace StoreAPI
 {
@@ -37,8 +36,6 @@ namespace StoreAPI
             services.AddControllers();
             /*            services.AddDbContext<StoreContext>(options => 
                             options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));*/
-
-            StoreContext storeContext = new StoreContext();
 
             services.AddDbContext<StoreContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
