@@ -80,7 +80,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{productName}")]
+        [HttpGet("get/Product/name={productName}")]
         [Produces("application/json")]
         public IActionResult GetProductByName(string productName)
         {

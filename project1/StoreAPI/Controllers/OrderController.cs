@@ -64,7 +64,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{locationId}")]
+        [HttpGet("get/Order/all/locId={locationId}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByLocationId(int id)
         {
@@ -79,7 +79,7 @@ namespace StoreAPI.Controllers
         }
 
 
-        [HttpGet("get/{userId}")]
+        [HttpGet("get/Order/userId={userId}")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByUserId(int id)
         {
@@ -93,7 +93,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{userId}")]
+        [HttpGet("get/Order/userId={userId}/date/asc")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByUserIdDateAsc(int id)
         {
@@ -107,7 +107,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{userId}")]
+        [HttpGet("get/Order/userId={userId}/date/desc")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByUserIdDateDesc(int id)
         {
@@ -121,7 +121,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{userId}")]
+        [HttpGet("get/Order/userId={userId}/price/asc")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByUserIdPriceAsc(int id)
         {
@@ -135,7 +135,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{userId}")]
+        [HttpGet("get/Order/userId={userId}/price/desc")]
         [Produces("application/json")]
         public IActionResult GetAllOrdersByUserIdPriceDesc(int id)
         {
@@ -149,7 +149,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{dateTime}")]
+        [HttpGet("get/Order/{dateTime}")]
         [Produces("application/json")]
         public IActionResult GetOrderByDate(DateTime dateTime)
         {
@@ -163,7 +163,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{orderId}")]
+        [HttpGet("get/Order/{orderId}")]
         [Produces("application/json")]
         public IActionResult GetOrderById(int id)
         {
@@ -177,7 +177,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{locationId}")]
+        [HttpGet("get/Order/locId={locationId}")]
         [Produces("application/json")]
         public IActionResult GetOrderByLocationId(int id)
         {
