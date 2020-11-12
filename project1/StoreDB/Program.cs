@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Serilog;
 
-namespace StoreDB.Models
+namespace StoreDB
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo
+                .File("Logs\\BL_Log.txt")
+                .CreateLogger();
         }
     }
 }

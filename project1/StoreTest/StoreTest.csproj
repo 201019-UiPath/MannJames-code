@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StoreAPI\StoreAPI.csproj" />
     <ProjectReference Include="..\StoreDB\StoreDB.csproj" />
     <ProjectReference Include="..\StoreLib\StoreLib.csproj" />
   </ItemGroup>

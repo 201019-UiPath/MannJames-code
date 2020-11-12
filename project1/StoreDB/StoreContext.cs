@@ -42,5 +42,7 @@ namespace StoreDB.Models
                 .HasKey(c => new { c.CartId, c.CartItemId });*/
         }
 
+       // public StoreContext(DbContextOptions<StoreContext> options) : base(options) { }
+
     }
 }

@@ -8,6 +8,7 @@ using StoreDB;
 using StoreDB.Models;
 using StoreDB.Repos;
 using StoreLib;
+using System.Runtime.CompilerServices;
 
 namespace StoreAPI
 {
@@ -17,14 +18,36 @@ namespace StoreAPI
         {
             Configuration = configuration;
         }
+        readonly string AllowedOrigins = "allowedOrigins";
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddPolicy(name: AllowedOrigins,
+                    builder => {
+                        builder.WithOrigins("*")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+            });
+
             services.AddControllers();
-            services.AddDbContext<StoreContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
+            /*            services.AddDbContext<StoreContext>(options => 
+                            options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));*/
+
+            StoreContext storeContext = new StoreContext();
+
+            services.AddDbContext<StoreContext>(options => 
+                options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
+
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepo, DBRepo>();
@@ -60,6 +83,8 @@ namespace StoreAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(AllowedOrigins);
 
             app.UseRouting();
 
