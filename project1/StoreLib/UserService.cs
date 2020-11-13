@@ -6,7 +6,7 @@ namespace StoreLib
 {
     public class UserService:IUserService
     {
-        private IUserRepo repo;
+        private readonly IUserRepo repo;
         public UserService(IUserRepo repo)
         {
             this.repo = repo;

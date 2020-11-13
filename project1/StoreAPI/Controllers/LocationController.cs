@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using StoreLib;
 using StoreDB.Models;
-using StoreDB.Repos;
 
 namespace StoreAPI.Controllers
 {
@@ -10,11 +9,11 @@ namespace StoreAPI.Controllers
     [ApiController]
     public class LocationController : Controller
     {
-        private readonly ILocationService locationService;
+        private readonly ILocationService _locationService;
 
-        public LocationController(ILocationService locationService)
+        public LocationController(ILocationService _locationService)
         {
-            this.locationService = locationService;
+            this._locationService = _locationService;
         }
 
         [HttpPost("add")]
@@ -24,7 +23,7 @@ namespace StoreAPI.Controllers
         {
             try
             {
-                locationService.AddLocation(location);
+                _locationService.AddLocation(location);
                 return CreatedAtAction("AddLocation", location);
 
             }
@@ -41,7 +40,7 @@ namespace StoreAPI.Controllers
         {
             try
             {
-                locationService.UpdateLocation(location);
+                _locationService.UpdateLocation(location);
                 return CreatedAtAction("UpdateLocation", location);
             }
             catch (Exception)
@@ -57,7 +56,7 @@ namespace StoreAPI.Controllers
         {
             try
             {
-                locationService.DeleteLocation(location);
+                _locationService.DeleteLocation(location);
                 return Ok();
             }
             catch (Exception)
@@ -72,7 +71,7 @@ namespace StoreAPI.Controllers
         {
             try
             {
-                return Ok(locationService.GetAllLocations());
+                return Ok(_locationService.GetAllLocations());
             }
             catch (Exception)
             {
