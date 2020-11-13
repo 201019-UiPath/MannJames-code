@@ -32,7 +32,8 @@ namespace StoreAPI.Controllers
             }
         }
         [HttpDelete("delete")]
-        //[Consumes("application/json")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
         public IActionResult DeleteUser(User user)
         {
             try
@@ -87,6 +88,5 @@ namespace StoreAPI.Controllers
                 return NotFound();
             }
         }
-
     }
 }
