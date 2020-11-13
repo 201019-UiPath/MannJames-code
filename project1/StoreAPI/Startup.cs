@@ -40,22 +40,27 @@ namespace StoreAPI
             services.AddDbContext<StoreContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
 
-            services.AddSession(options =>
+            services.AddHttpClient();
+           // services.AddResponseCaching();
+            services.AddAuthentication();
+
+/*            services.AddSession(options =>
             {
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
-            });
+            });*/
 
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<IProductRepo, DBRepo>();
+            //services.AddScoped<DbContext, StoreContext>();
+            /*            services.AddScoped<IProductService, ProductService>();
+                        services.AddScoped<IProductRepo, DBRepo>();
 
-            services.AddScoped<ICartItemService, CartItemService>();
-            services.AddScoped<ICartItemRepo, DBRepo>();
+                        services.AddScoped<ICartItemService, CartItemService>();
+                        services.AddScoped<ICartItemRepo, DBRepo>();*/
 
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ILocationRepo, DBRepo>();
 
-            services.AddScoped<IUserService, UserService>();
+/*            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepo, DBRepo>();
 
             services.AddScoped<ICartService, CartService>();
@@ -68,7 +73,10 @@ namespace StoreAPI
             services.AddScoped<IOrderRepo, DBRepo>();
 
             services.AddScoped<IInventoryService, InventoryService>();
-            services.AddScoped<IInventoryItemRepo, DBRepo>();
+            services.AddScoped<IInventoryItemRepo, DBRepo>();*/
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

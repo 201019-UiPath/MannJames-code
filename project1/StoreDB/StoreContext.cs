@@ -7,6 +7,10 @@ namespace StoreDB.Models
 {
     public class StoreContext : DbContext
     {
+        public StoreContext()
+        {
+
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Location> Locations { get; set; }
@@ -21,7 +25,7 @@ namespace StoreDB.Models
         {
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+/*        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!(optionsBuilder.IsConfigured))
             {
@@ -33,7 +37,7 @@ namespace StoreDB.Models
                 var connectionString = configuration.GetConnectionString("StoreDB");
                 optionsBuilder.UseNpgsql(connectionString);
             }
-        }
+        }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

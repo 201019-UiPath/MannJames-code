@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using StoreLib;
 using StoreDB.Models;
+using StoreDB.Repos;
 
 namespace StoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LocationController : ControllerBase
+    public class LocationController : Controller
     {
         private readonly ILocationService locationService;
 
@@ -25,6 +26,7 @@ namespace StoreAPI.Controllers
             {
                 locationService.AddLocation(location);
                 return CreatedAtAction("AddLocation", location);
+
             }
             catch (Exception)
             {
@@ -64,7 +66,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get")]
+        [HttpGet("getAll")]
         [Produces("application/json")]
         public IActionResult GetAllLocations()
         {
