@@ -7,6 +7,10 @@ namespace StoreDB.Models
 {
     public class StoreContext : DbContext
     {
+        public StoreContext() { }
+        public StoreContext(DbContextOptions<StoreContext> options):base(options) {}
+
+
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Location> Locations { get; set; }
