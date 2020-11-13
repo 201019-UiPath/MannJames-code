@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using StoreDB.Models;
 
 namespace StoreTest
 {
-    class OrderTests
+    public class MockLibrary
     {
+        public Location loc1 = new Location();
+        
     }
 }

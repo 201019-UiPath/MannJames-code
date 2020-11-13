@@ -71,7 +71,8 @@ namespace StoreDB
         }
         public List<Location> GetAllLocations()
         {
-            return context.Locations.Select(x => x).ToList();
+            List<Location> results = context.Locations.Select(x => x).ToList();
+            return results;
         }
 
         public void UpdateLocation(Location location)
