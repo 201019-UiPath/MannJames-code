@@ -9,7 +9,7 @@ namespace StoreDB
     public class DBRepo : IProductRepo, ILocationRepo, IInventoryItemRepo, 
         ICartItemRepo, ICartRepo, IUserRepo, ILineItemRepo, IOrderRepo
     {
-        private StoreContext context;
+        readonly StoreContext context;
         public DBRepo(StoreContext context)
         {
             this.context = context;

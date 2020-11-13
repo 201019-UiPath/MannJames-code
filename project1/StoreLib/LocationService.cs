@@ -6,7 +6,7 @@ namespace StoreLib
 {
     public class LocationService:ILocationService
     {
-        private ILocationRepo repo;
+        readonly ILocationRepo repo;
         public LocationService(ILocationRepo repo)
         {
             this.repo = repo;

@@ -7,12 +7,8 @@ namespace StoreDB.Models
 {
     public class StoreContext : DbContext
     {
-        public StoreContext()
-        {
 
-        }
-
-        public StoreContext(DbContextOptions<DbContext> options)
+        public StoreContext(DbContextOptions<StoreContext> options)
     : base(options)
         {
 
