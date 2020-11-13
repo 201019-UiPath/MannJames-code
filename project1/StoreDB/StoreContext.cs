@@ -14,6 +14,8 @@ namespace StoreDB.Models
 
         }
 
+        public StoreContext() { }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Location> Locations { get; set; }
