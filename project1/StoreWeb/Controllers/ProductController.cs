@@ -9,7 +9,7 @@ namespace StoreWeb.Controllers
     public class ProductController : Controller
     {
         //TODO get the url (44331 for web project but not sure for other project)
-        const string url = "";
+        const string url = "https://localhost:44317/";
         private User user;
         public IActionResult Details(int productId)
         {

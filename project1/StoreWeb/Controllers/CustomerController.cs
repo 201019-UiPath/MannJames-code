@@ -11,7 +11,7 @@ namespace StoreWeb.Controllers
     public class CustomerController : Controller
     {
         //TODO put url in
-        const string url = "";
+        const string url = "https://localhost:44317/";
         private User user;
         public IActionResult Index()
         {

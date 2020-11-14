@@ -14,7 +14,7 @@ namespace StoreWeb.Controllers
     public class OrderController : Controller
     {
         //TODO url proper needed
-        const string url = "";
+        const string url = "https://localhost:44317/";
         private User user;
         public IActionResult Receipt(Order order)
         {
