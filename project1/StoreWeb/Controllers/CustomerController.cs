@@ -59,6 +59,9 @@ namespace StoreWeb.Controllers
             HttpContext.Session.SetObject("User", user);
             return View("GetInventory", user.Location.Inventory);
         }
+
+        //TODO add way to update location
+
         public IActionResult RemoveItemFromCart(Product product)
         {
             user = HttpContext.Session.GetObject<User>("User");
