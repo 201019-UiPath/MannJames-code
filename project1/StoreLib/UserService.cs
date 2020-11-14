@@ -19,9 +19,9 @@ namespace StoreLib
         {
             repo.UpdateUser(user);
         }
-        public User GetUserById(int id)
+        public User GetUserById(int userId)
         {
-            return repo.GetUserById(id);
+            return repo.GetUserById(userId);
         }
         public User GetUserByUsername(string username)
         {

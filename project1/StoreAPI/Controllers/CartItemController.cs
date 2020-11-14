@@ -7,52 +7,57 @@ namespace StoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class CartItemController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly ICartItemService _cartItemService;
 
-        public UserController(IUserService userService)
+        public CartItemController(ICartItemService _cartItemService)
         {
-            _userService = userService;
+            this._cartItemService = _cartItemService;
         }
+
 
         [HttpPost("add")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        public IActionResult AddUser(User newUser)
+        public IActionResult AddCartItem(CartItem item)
         {
             try
             {
-                _userService.AddUser(newUser);
-                return CreatedAtAction("AddUser", newUser);
+                _cartItemService.AddCartItem(item);
+                //return CreatedAtAction("AddCartItem", item);
+                return Ok();
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
+
+        [HttpPut("edit")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public IActionResult UpdateCartItem(CartItem item)
+        {
+            try
+            {
+                _cartItemService.UpdateCartItem(item);
+                return CreatedAtAction("UpdateCartItem", item);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpDelete("delete")]
+        [Consumes("application/json")]
         [Produces("application/json")]
-        [Consumes("application/json")]
-        public IActionResult DeleteUser(User user)
+        public IActionResult DeleteCartItem(CartItem item)
         {
             try
             {
-                _userService.DeleteUser(user);
-                return Ok();
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }
-        [HttpPut("update")]
-        [Consumes("application/json")]
-        public IActionResult UpdateUser(User user)
-        {
-            try
-            {
-                _userService.UpdateUser(user);
+                _cartItemService.DeleteCartItem(item);
                 return Ok();
             }
             catch (Exception)
@@ -61,13 +66,13 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/name={username}")]
+        [HttpGet("get/{cartId}")]
         [Produces("application/json")]
-        public IActionResult GetUserByUsername(string username)
+        public IActionResult GetAllCartItemsByCartId(int cartId)
         {
             try
             {
-                return Ok(_userService.GetUserByUsername(username));
+                return Ok(_cartItemService.GetAllCartItemsByCartId(cartId));
             }
             catch (Exception)
             {
@@ -75,18 +80,19 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/id={userId}")]
+        [HttpGet("get/cart/{cartItemId}")]
         [Produces("application/json")]
-        public IActionResult GetUserById(int userId)
+        public IActionResult GetCartItemByCartItemId(int cartItemId)
         {
             try
             {
-                return Ok(_userService.GetUserById(userId));
+                return Ok(_cartItemService.GetCartItemById(cartItemId));
             }
             catch (Exception)
             {
                 return NotFound();
             }
         }
+
     }
 }

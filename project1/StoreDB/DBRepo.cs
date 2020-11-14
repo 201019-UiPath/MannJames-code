@@ -242,19 +242,21 @@ namespace StoreDB
             context.SaveChanges();
         }
 
-        public User GetUserById(int id)
+        public User GetUserById(int userId)
         {
-            return context.Users.SingleOrDefault(q => q.UserId == id);
+            User user = context.Users.SingleOrDefault(x => x.UserId == userId);
+            return user;
         }
 
         public User GetUserByUsername(string username)
         {
-            return context.Users.FirstOrDefault(q => q.Username==username);
+            User user = context.Users.SingleOrDefault(x => x.Username==username);
+            return user;
         }
 
         public List<User> GetAllUsers()
         {
-            return context.Users.Select(q => q).ToList();
+            return context.Users.Select(x => x).ToList();
         }
 
         public void DeleteUser(User user)

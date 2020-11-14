@@ -54,19 +54,15 @@ namespace StoreAPI
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepo, DBRepo>();
 
-            /*
-
             services.AddScoped<ICartItemService, CartItemService>();
             services.AddScoped<ICartItemRepo, DBRepo>();
             
-             */
-
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<ILocationRepo, DBRepo>();
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepo, DBRepo>();
-            /*   
+ 
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<ICartRepo, DBRepo>();
 
@@ -75,7 +71,7 @@ namespace StoreAPI
 
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepo, DBRepo>();
-*/
+
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddScoped<IInventoryItemRepo, DBRepo>();
         }
