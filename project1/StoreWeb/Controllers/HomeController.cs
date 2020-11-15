@@ -1,61 +1,80 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using StoreWeb.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
+using StoreWeb.Models;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace StoreWeb.Controllers
 {
+
     public class HomeController : Controller
     {
-        readonly HttpClient client = new HttpClient();
-        private const string url = "https://localhost:44317/";
+        const string url = "https://localhost:44317/api/";
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+
         [HttpGet]
-        public async Task<ViewResult> Login()
+        public ViewResult Login(int? sessionExists)
         {
-            var model = new LoginModel();
-            //await model;
-            return View(model);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginModel model)
-        {
-            HttpClientHandler handler = new HttpClientHandler();
-            var client = new HttpClient(handler);
-            client.BaseAddress = new Uri(url);
-            var response = client.GetAsync($"user/get/name={model.Username}");
-            await response;
-            //problem is here in debug
-            if (response.Result.IsSuccessStatusCode)
+            if (sessionExists == 0)
             {
-                var jsonString = response.Result.Content.ReadAsStringAsync();
-                await jsonString;
-                var verifiedUser = JsonConvert.DeserializeObject<User>(jsonString.Result);
-                if (verifiedUser.Password == model.Password && verifiedUser.Username == model.Username)
+                ViewData["Redirect"] = "Your session does not exist. Please sign in.";
+            }
+            return View();
+        }
+        public async Task<IActionResult> Login(LoginModel userInput)
+        {
+            if (ModelState.IsValid)
+            {
+                string inputUsername = userInput.Username;
+                string inputPassword = userInput.Password;
+                try
                 {
-                    HttpContext.Session.SetObject("User", verifiedUser);
-                    return RedirectToAction("GetInventory", "Customer");
+                    string request = $"user/get/name={inputUsername}";
+                    var inputCustomer = await this.GetDataAsync<User>(request);
+                    if (inputCustomer.Password == inputPassword && inputCustomer.Username == inputUsername)
+                    {
+                        HttpContext.Session.Set<User>("CurrentCustomer", inputCustomer);
+                        return RedirectToAction("Index", "Customer");
+                    }
+                    else
+                    {
+                        return View(userInput);
+                    };
                 }
-                else
+                catch (HttpRequestException)
                 {
-                    ModelState.AddModelError("Error", "Invalid information");
-                    return View(model);
+                    return View(userInput);
+                }
+                catch (NullReferenceException)
+                {
+                    return View(userInput);
                 }
             }
-            return View(model);
+            return View(userInput);
         }
-
+        [Route(("Privacy/"))]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Route(("Controller=Home"))]
+        public IActionResult About()
+        {
+            return View();
+        }
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

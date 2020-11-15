@@ -38,5 +38,12 @@ namespace StoreWeb.Models
         {
             Cart = new Cart();
         }
+
+        public User(string username, string email, string password)
+        {
+            Username = username;
+            Email = email;
+            Password = password;
+        }
     }
 }
