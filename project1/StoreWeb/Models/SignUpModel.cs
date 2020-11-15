@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StoreWeb.Models
 {
@@ -24,5 +22,7 @@ namespace StoreWeb.Models
         [DataType(DataType.Password)]
         [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
+        public int LocationId { get; set; }
+        public List<SelectListItem> LocationOptions { get; set; }
     }
 }
