@@ -3,18 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreWeb.Models
 {
-    public class CartItem
+    public class InventoryItem
     {
         [Key]
-        public int CartItemId { get; set; }
-        [ForeignKey("FK_CartCartId")]
-        public int CartId { get; set; }
-        public Cart Cart { get; set; }
-        [ForeignKey("FK_CartProd")]
+        public int IIId { get; set; }
+        [ForeignKey("FK_InvProd")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
-
+        [ForeignKey("FK_InvLoc")]
+        public int LocationId { get; set; }
+        public Location Location { get; set; }
+        
         public int Quantity { get; set; }
-
     }
 }

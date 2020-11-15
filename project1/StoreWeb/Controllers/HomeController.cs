@@ -1,76 +1,92 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Threading.Tasks;
 using StoreWeb.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace StoreWeb.Controllers
 {
 
     public class HomeController : Controller
     {
-        const string url = "https://localhost:44317/api/";
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly string apiBaseUrl;
+        private User loggedInUser;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
+
+            apiBaseUrl = _configuration.GetValue<string>("https://localhost:44317/api/");
         }
 
-        [HttpGet]
-        public ViewResult Login(int? sessionExists)
-        {
-            if (sessionExists == 0)
-            {
-                ViewData["Redirect"] = "Your session does not exist. Please sign in.";
-            }
-            return View();
-        }
-        public async Task<IActionResult> Login(LoginModel userInput)
-        {
-            if (ModelState.IsValid)
-            {
-                string inputUsername = userInput.Username;
-                string inputPassword = userInput.Password;
-                try
-                {
-                    string request = $"user/get/name={inputUsername}";
-                    var inputCustomer = await this.GetDataAsync<User>(request);
-                    if (inputCustomer.Password == inputPassword && inputCustomer.Username == inputUsername)
-                    {
-                        HttpContext.Session.Set<User>("CurrentCustomer", inputCustomer);
-                        return RedirectToAction("Index", "Customer");
-                    }
-                    else
-                    {
-                        return View(userInput);
-                    };
-                }
-                catch (HttpRequestException)
-                {
-                    return View(userInput);
-                }
-                catch (NullReferenceException)
-                {
-                    return View(userInput);
-                }
-            }
-            return View(userInput);
-        }
-        [Route(("Privacy/"))]
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
-        [Route(("Controller=Home"))]
-        public IActionResult About()
+        public IActionResult Login(User user)
+        {
+            if (user != null)
+            {
+                HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
+                return RedirectToAction("Index", "Manager", user);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult SignUp()
         {
             return View();
         }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult CustomerLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CustomerLogin(User user)
+        {
+            if (user != null)
+            {
+                HttpContext.Session.SetString("SessionUser", JsonConvert
+                    .SerializeObject(user));
+                return RedirectToAction("Index", "Customer", user);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(User user)
+        {
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("CustomerLogin", "Home");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

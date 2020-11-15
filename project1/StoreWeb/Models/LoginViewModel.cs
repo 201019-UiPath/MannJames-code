@@ -3,15 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StoreWeb.Models
 {
-    public class LoginModel
+    public class LoginViewModel
     {
-        public LoginModel() { }
-        public LoginModel(string username, string password)
-        {
-            Username = username;
-            Password = password;
-        }
-
         [DataType(DataType.Text)]
         [DisplayName("Username")]
         public string Username { get; set; }
@@ -19,5 +12,7 @@ namespace StoreWeb.Models
         [DataType(DataType.Password)]
         [DisplayName("Password")]
         public string Password { get; set; }
+
+        public User User { get; set; }
     }
 }

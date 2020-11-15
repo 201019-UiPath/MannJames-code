@@ -4,10 +4,9 @@ namespace StoreWeb.Models
 {
     public class Product
     {
+        [Key]
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-
-        [DataType(DataType.Currency)]
-        public decimal Price { get; set; }
+        public float Price { get; set; }
     }
 }

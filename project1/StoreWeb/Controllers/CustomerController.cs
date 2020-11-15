@@ -1,137 +1,101 @@
-﻿using StoreWeb.Models;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using StoreWeb.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
+using NpgsqlTypes;
+using Serilog;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace StoreWeb.Controllers
 {
-    [Route("user")]
     public class CustomerController : Controller
     {
-        const string url = "https://localhost:44317/api/";
+        private readonly ILogger<CustomerController> _logger;
+        private readonly IConfiguration _configuration;
+        private readonly string apiBaseUrl;
+        readonly HttpClient client = new HttpClient();
 
-        private readonly IActionResult LoginRedirectAction;
-        private readonly Task<IActionResult> LoginRedirectActionTask;
+        public CustomerController(ILogger<CustomerController> logger, 
+            IConfiguration configuration)
+        {
+            _logger = logger;
+            _configuration = configuration;
+            apiBaseUrl = _configuration.GetValue<string>("https://localhost:44317/api/");
+        }
 
-        private User CurrentCustomer
+        public IActionResult Index()
         {
-            get { return HttpContext.Session.Get<User>("CurrentCustomer"); }
-            set { HttpContext.Session.Set("CurrentCustomer", value); }
+            return View();
         }
-        private List<Inventory> CurrentCart
-        {
-            get { return HttpContext.Session.Get<List<Inventory>>("CurrentCart"); }
-            set { HttpContext.Session.Set<List<Inventory>>("CurrentCart", value); }
-        }
-        private Location CurrentLocation 
-        { 
-            get { return HttpContext.Session.Get<Location>("CurrentLocation"); } 
-            set { CurrentCart = null; HttpContext.Session.Set<Location>("CurrentLocation", value); } 
-        }
-        public CustomerController()
-        {
-            LoginRedirectAction = RedirectToAction("Login", "Home", "-1");
-            LoginRedirectActionTask = Task.Factory.StartNew(() => LoginRedirectAction);
-        }
-        [Route("")]
 
-        public async Task<IActionResult> Index()
+        public IActionResult PlaceOrder()
         {
-            if (CurrentCustomer == null)
-            {
-                return await LoginRedirectActionTask;
-            }
-            return await Task.Factory.StartNew(() => View(CurrentCustomer));
+            return View();
         }
-        [Route("orders")]
-        public async Task<IActionResult> GetOrderHistory(int? sortBy)
-        {
-            if (CurrentCustomer == null)
-            {
-                return await LoginRedirectActionTask;
-            }
-            string request = $"customer/get/orders/{CurrentCustomer.Username}";
-            var receivedOrders = await this.GetDataAsync<List<Order>>(request);
 
-            string locationRequest = $"location/get";
-            var receivedLocations = await this.GetDataAsync<List<Location>>(locationRequest);
-            foreach (Order order in receivedOrders)
+       /* [HttpPost]
+        public IActionResult PlaceOrder(int locationId)
+        {
+            var user = JsonConvert.DeserializeObject<User>
+                (HttpContext.Session.GetString("SessionUser"));
+            Cart cart = new Cart
             {
-                order.Location = receivedLocations.Single(l => l.LocationId == order.LocationId);
-            }
-            List<Order> sortedOrders = receivedOrders;
-            sortedOrders = sortBy switch
-            {
-                0 => receivedOrders.OrderBy(o => o.OrderDate).ToList(),
-                1 => receivedOrders.OrderBy(o => o.OrderDate).Reverse().ToList(),
-                2 => receivedOrders.OrderBy(o => o.TotalCost).ToList(),
-                3 => receivedOrders.OrderBy(o => o.TotalCost).Reverse().ToList(),
-                _ => receivedOrders
+                UserId = user.UserId,
+                //LocationId = user.LocationId,
             };
-            if (receivedOrders != default) 
-                return View(sortedOrders
-            ); 
-            else return StatusCode(500);
+            return RedirectToAction("StartOrdering", "Customer", cart);
         }
+*/
 
-        [Route("orders/details")]
-        public async Task<IActionResult> ViewOrderDetails(int orderId)
+/*        public IActionResult StartOrdering(Cart cart)
         {
-            if (CurrentCustomer == null) return await LoginRedirectActionTask;
-            string olisRequest = $"order/products/get/{orderId}";
-            var receivedLineItems = await this.GetDataAsync<List<LineItem>>(olisRequest);
-            string productsRequest = $"product/get";
-            var receivedProducts = await this.GetDataAsync<List<Product>>(productsRequest);
-            if (receivedLineItems == null)
-            {
-                return StatusCode(500);
-            }
-            foreach (LineItem li in receivedLineItems)
-            {
-                li.Product = receivedProducts.Single(p => p.ProductId == li.ProductId);
-            }
-            return View(receivedLineItems);
+            cart.Order = new Order();
+            return View(cart);
+        }*/
+
+        public IActionResult OrderHistory()
+        {
+            var user = JsonConvert.DeserializeObject<User>
+                (HttpContext.Session.GetString("SessionUser"));
+            User orderUser = new User { Username = user.Username };
+            return View(orderUser);
         }
 
-        [Route("add")]
-        public ViewResult AddCustomer() 
-        { return View(); }
+        public IActionResult ViewInventory()
+        {
+            return View();
+        }
 
         [HttpPost]
-        [Route("add")]
-        public async Task<IActionResult> AddCustomer(User customer)
+        public IActionResult ViewInventory(int locationId)
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    User newCustomer = new User(customer.Username, customer.Email, customer.Password);
-                    await this.PostDataAsync($"customer/add", newCustomer);
+/*            using (var client = new HttpClient())
+            {*/
+                client.BaseAddress = new Uri(apiBaseUrl);
+                var response = client.GetAsync($"location/get/{locationId}");
+                response.Wait();
 
-                    LoginModel customerData = new LoginModel(customer.Email, customer.Password);
-                    return RedirectToAction("Login", "Home", customerData);
-                }
-                catch (HttpRequestException e)
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
                 {
-                    ModelState.AddModelError(string.Empty, e.Message);
-                    return View(customer);
-                }
+                    var jsonString = result.Content.ReadAsStringAsync();
+                    jsonString.Wait();
+
+                    var model = JsonConvert.DeserializeObject<Location>(jsonString.Result);
+                    return View("ViewInventoryItems", model);
+              //  }
             }
-            else return View(customer);
-        }
-
-        [Route("order/")]
-        public async Task<IActionResult> SelectLocation()
-        {
-            if (CurrentCustomer == null) return await LoginRedirectActionTask;
-            string request = $"location/get";
-
-            var locations = await this.GetDataAsync<List<Location>>(request);
-
-            return View(locations);
+            return View();
         }
     }
 }

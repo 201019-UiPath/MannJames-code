@@ -34,21 +34,14 @@ namespace StoreAPI
             });
 
             services.AddControllers();
-            /*            services.AddDbContext<StoreContext>(options => 
-                            options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));*/
 
             services.AddDbContext<StoreContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
 
-            services.AddHttpClient();
-           // services.AddResponseCaching();
-            services.AddAuthentication();
-
-/*            services.AddSession(options =>
-            {
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });*/
+/*            services.AddHttpClient();
+            //put response caching back in
+            services.AddResponseCaching();
+            services.AddAuthentication();*/
 
             //services.AddScoped<DbContext, StoreContext>();
             services.AddScoped<IProductService, ProductService>();

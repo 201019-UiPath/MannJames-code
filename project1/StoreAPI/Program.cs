@@ -9,9 +9,9 @@ namespace StoreAPI
         public static void Main(string[] args)
         {
             //setup logger
-            Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo
-                                                               .File("Logs\\BL_Log.txt")
-                                                               .CreateLogger();
+            Log.Logger = new LoggerConfiguration().MinimumLevel.Verbose()
+                .WriteTo.File("Logs\\BL_Log.txt")
+                .CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }
 
