@@ -18,12 +18,15 @@ namespace SoilMatesWeb.Controllers
         private readonly IConfiguration _configuration;
         private readonly string apiBaseUrl;
 
+        readonly HttpClient client = new HttpClient();
+
         public ManagerController(ILogger<ManagerController> logger, 
             IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
-            apiBaseUrl = _configuration.GetValue<string>("https://localhost:44317/api/");
+            apiBaseUrl = _configuration.GetValue<string>
+                ("https://localhost:44317/api/");
         }
 
         public IActionResult Index()
@@ -43,14 +46,14 @@ namespace SoilMatesWeb.Controllers
             return View();
         }
 
-
         [HttpPost]
         public IActionResult ViewOrdersByLocation(int locationId)
         {
-            using (var client = new HttpClient())
-            {
+            //using (var client = new HttpClient())
+            //{
                 client.BaseAddress = new Uri(apiBaseUrl);
-                var response = client.GetAsync($"order/get/location/{locationId}");
+                var response = client.GetAsync
+                    ($"order/get/location/{locationId}");
                 response.Wait();
 
                 var result = response.Result;
@@ -63,7 +66,7 @@ namespace SoilMatesWeb.Controllers
                         (jsonString.Result);
                     return View("ViewOrdersAtLocation", model);
                 }
-            }
+            //}
             return View();
         }
 
@@ -80,8 +83,8 @@ namespace SoilMatesWeb.Controllers
         [HttpPost]
         public IActionResult ViewInventory(int locationId)
         {
-            using (var client = new HttpClient())
-            {
+           // using (var client = new HttpClient())
+            //{
                 client.BaseAddress = new Uri(apiBaseUrl);
                 var response = client.GetAsync($"location/get/{locationId}");
                 response.Wait();
@@ -95,7 +98,7 @@ namespace SoilMatesWeb.Controllers
                     var model = JsonConvert.DeserializeObject<Location>(jsonString.Result);
                     return View("ViewInventoryItems", model);
                 }
-            }
+           // }
             return View();
         }
         public IActionResult ReplenishInventory()
