@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
-namespace GGsWeb.Controllers
+namespace StoreWeb.Controllers
 {
     public class CustomerController : Controller
     {

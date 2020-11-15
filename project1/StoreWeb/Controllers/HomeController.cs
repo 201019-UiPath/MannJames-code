@@ -13,6 +13,7 @@ namespace StoreWeb.Controllers
 {
     public class HomeController : Controller
     {
+
         private const string url = "https://localhost:44317/";
         private readonly ILogger<HomeController> _logger;
 
@@ -40,6 +41,8 @@ namespace StoreWeb.Controllers
 
                     //SocketException: 
                     //No connection could be made because the target machine actively refused it.
+
+                    //https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/
 
                     response.Wait();
 
