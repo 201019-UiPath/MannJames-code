@@ -50,11 +50,6 @@ namespace StoreWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-/*        public IActionResult ManagerLogin()
-        {
-            return View();
-        }*/
-
         [HttpPost]
         public IActionResult ManagerLogin(User user)
         {

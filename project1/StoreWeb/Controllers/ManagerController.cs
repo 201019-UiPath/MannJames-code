@@ -6,9 +6,7 @@ using Newtonsoft.Json;
 using StoreWeb.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace SoilMatesWeb.Controllers
 {
@@ -49,8 +47,6 @@ namespace SoilMatesWeb.Controllers
         [HttpPost]
         public IActionResult ViewOrdersByLocation(int locationId)
         {
-            //using (var client = new HttpClient())
-            //{
                 client.BaseAddress = new Uri(apiBaseUrl);
                 var response = client.GetAsync
                     ($"order/get/location/{locationId}");
@@ -66,7 +62,6 @@ namespace SoilMatesWeb.Controllers
                         (jsonString.Result);
                     return View("ViewOrdersAtLocation", model);
                 }
-            //}
             return View();
         }
 
@@ -83,8 +78,6 @@ namespace SoilMatesWeb.Controllers
         [HttpPost]
         public IActionResult ViewInventory(int locationId)
         {
-           // using (var client = new HttpClient())
-            //{
                 client.BaseAddress = new Uri(apiBaseUrl);
                 var response = client.GetAsync($"location/get/{locationId}");
                 response.Wait();
@@ -98,7 +91,6 @@ namespace SoilMatesWeb.Controllers
                     var model = JsonConvert.DeserializeObject<Location>(jsonString.Result);
                     return View("ViewInventoryItems", model);
                 }
-           // }
             return View();
         }
         public IActionResult ReplenishInventory()

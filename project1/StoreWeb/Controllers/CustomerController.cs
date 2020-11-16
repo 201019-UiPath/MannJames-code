@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using StoreWeb.Models;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
-using NpgsqlTypes;
-using Serilog;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -43,7 +35,7 @@ namespace StoreWeb.Controllers
             return View();
         }
 
-       /* [HttpPost]
+       [HttpPost]
         public IActionResult PlaceOrder(int locationId)
         {
             var user = JsonConvert.DeserializeObject<User>
@@ -55,13 +47,11 @@ namespace StoreWeb.Controllers
             };
             return RedirectToAction("StartOrdering", "Customer", cart);
         }
-*/
 
-/*        public IActionResult StartOrdering(Cart cart)
+        public IActionResult StartOrdering(Cart cart)
         {
-            cart.Order = new Order();
             return View(cart);
-        }*/
+        }
 
         public IActionResult OrderHistory()
         {
@@ -79,8 +69,6 @@ namespace StoreWeb.Controllers
         [HttpPost]
         public IActionResult ViewInventory(int locationId)
         {
-/*            using (var client = new HttpClient())
-            {*/
                 client.BaseAddress = new Uri(apiBaseUrl);
                 var response = client.GetAsync($"location/get/{locationId}");
                 response.Wait();
@@ -93,8 +81,7 @@ namespace StoreWeb.Controllers
 
                     var model = JsonConvert.DeserializeObject<Location>(jsonString.Result);
                     return View("ViewInventoryItems", model);
-              //  }
-            }
+                }
             return View();
         }
     }
