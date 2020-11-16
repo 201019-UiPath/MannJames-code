@@ -76,7 +76,7 @@ namespace StoreAPI.Controllers
             }
         }
 
-        [HttpGet("get/{locationId}")]
+        [HttpGet("get/location/{locationId}")]
         [Produces("application/json")]
         public IActionResult GetAllInventoryItemsAtLocation(int locationId)
         {
