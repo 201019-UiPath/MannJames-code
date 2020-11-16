@@ -60,18 +60,18 @@ namespace StoreWeb.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult CustomerLogin()
+       // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+/*        public IActionResult CustomerLogin()
         {
             return View();
-        }
+        }*/
 
         public IActionResult ManagerLogin()
         {
-            return View();
+           return View();
         }
 
-        [HttpPost]
+/*        [HttpPost]
         public IActionResult CustomerLogin(User user)
         {
             if (user != null)
@@ -81,8 +81,10 @@ namespace StoreWeb.Controllers
                 return RedirectToAction("Index", "Customer", user);
             }
             return RedirectToAction("Index", "Home");
-        }
-/*        public IActionResult ManagerLogin(User user)
+        }*/
+
+        [HttpPost]
+        public IActionResult ManagerLogin(User user)
         {
             if (user != null)
             {
@@ -91,7 +93,7 @@ namespace StoreWeb.Controllers
                 return RedirectToAction("Index", "Manager", user);
             }
             return RedirectToAction("Index", "Home");
-        }*/
+        }
 
         [HttpPost]
         public IActionResult SignUp(User user)
