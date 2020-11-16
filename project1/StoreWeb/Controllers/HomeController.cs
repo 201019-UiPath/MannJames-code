@@ -24,7 +24,8 @@ namespace StoreWeb.Controllers
             _logger = logger;
             _configuration = configuration;
 
-            apiBaseUrl = _configuration.GetValue<string>("https://localhost:44317/api/");
+            apiBaseUrl = _configuration.GetValue<string>
+                ("https://localhost:44317/api/");
         }
 
         public IActionResult Index()
@@ -48,7 +49,7 @@ namespace StoreWeb.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
-                return RedirectToAction("Index", "Manager", user);
+                return RedirectToAction("Index", "Customer", user);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -65,6 +66,11 @@ namespace StoreWeb.Controllers
             return View();
         }
 
+        public IActionResult ManagerLogin()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult CustomerLogin(User user)
         {
@@ -76,6 +82,16 @@ namespace StoreWeb.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+/*        public IActionResult ManagerLogin(User user)
+        {
+            if (user != null)
+            {
+                HttpContext.Session.SetString("SessionUser", JsonConvert
+                    .SerializeObject(user));
+                return RedirectToAction("Index", "Manager", user);
+            }
+            return RedirectToAction("Index", "Home");
+        }*/
 
         [HttpPost]
         public IActionResult SignUp(User user)
@@ -84,7 +100,7 @@ namespace StoreWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("CustomerLogin", "Home");
+            return RedirectToAction("Login", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

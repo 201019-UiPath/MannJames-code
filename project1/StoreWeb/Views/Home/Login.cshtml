@@ -24,9 +24,10 @@
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Login"
-                                       class="btn btn-info" onclick="Login('Manager')" />
+                                       class="btn btn-info" onclick="Login('Customer')" />
                             </div>
                             <span><small>Don't have an account? @Html.ActionLink("Sign up", "Signup", "Home")!</small></span>
+                            <span><small>Are you an employee? @Html.ActionLink("Employee Login", "ManagerLogin", "Home")!</small></span>
                         </form>
                     </div>
                 </div>
