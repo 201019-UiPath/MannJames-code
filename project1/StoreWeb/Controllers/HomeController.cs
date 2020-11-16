@@ -1,31 +1,27 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net.Http;
-using StoreWeb.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using StoreWeb.Models;
+using System.Diagnostics;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
-using System.Text;
-using Microsoft.Extensions.Configuration;
+
 
 namespace StoreWeb.Controllers
 {
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         private readonly string apiBaseUrl;
-        private User loggedInUser;
+        private User loggedIn;
 
         public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
 
-            apiBaseUrl = _configuration.GetValue<string>
-                ("https://localhost:44317/api/");
+            apiBaseUrl = _configuration.GetValue<string>("https://localhost:44317/api/");
         }
 
         public IActionResult Index()
@@ -44,12 +40,28 @@ namespace StoreWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(User user)
+        public IActionResult CustomerLogin(User user)
         {
             if (user != null)
             {
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
                 return RedirectToAction("Index", "Customer", user);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+/*        public IActionResult ManagerLogin()
+        {
+            return View();
+        }*/
+
+        [HttpPost]
+        public IActionResult ManagerLogin(User user)
+        {
+            if (user != null)
+            {
+                HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
+                return RedirectToAction("Index", "Manager", user);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -60,37 +72,24 @@ namespace StoreWeb.Controllers
             return View();
         }
 
-       // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-/*        public IActionResult CustomerLogin()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult CustomerLogin()
         {
             return View();
-        }*/
+        }
 
         public IActionResult ManagerLogin()
         {
-           return View();
+           return RedirectToAction("ManagerLogin", "Home");
         }
 
-/*        [HttpPost]
-        public IActionResult CustomerLogin(User user)
-        {
-            if (user != null)
-            {
-                HttpContext.Session.SetString("SessionUser", JsonConvert
-                    .SerializeObject(user));
-                return RedirectToAction("Index", "Customer", user);
-            }
-            return RedirectToAction("Index", "Home");
-        }*/
-
         [HttpPost]
-        public IActionResult ManagerLogin(User user)
+        public IActionResult Login(User user)
         {
             if (user != null)
             {
-                HttpContext.Session.SetString("SessionUser", JsonConvert
-                    .SerializeObject(user));
-                return RedirectToAction("Index", "Manager", user);
+                HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
+                return RedirectToAction("Index", "Customer", user);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -102,7 +101,7 @@ namespace StoreWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("CustomerLogin", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
